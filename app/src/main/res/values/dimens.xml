@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="appbar_padding_top">8dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+    <!--    dp value add -->
+    <dimen name="dp300">300dp</dimen>
+    <dimen name="dp250">250dp</dimen>
+    <dimen name="dp230">230dp</dimen>
+    <dimen name="dp150">150dp</dimen>
+    <dimen name="dp105">105dp</dimen>
+    <dimen name="dp60">60dp</dimen>
+    <dimen name="dp52">52dp</dimen>
+    <dimen name="dp40">40dp</dimen>
+    <dimen name="dp32">32dp</dimen>
+    <dimen name="dp16">16dp</dimen>
+    <dimen name="dp15">15dp</dimen>
+    <dimen name="dp10">10dp</dimen>
+    <dimen name="dp4">4dp</dimen>
+    <dimen name="dp5">5dp</dimen>
+    <dimen name="dp0.5">0.5dp</dimen>
+    <dimen name="dp0">0dp</dimen>
+    <!--    sp value add-->
+    <dimen name="sp25">25sp</dimen>
+</resources>
