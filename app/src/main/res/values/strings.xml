@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">MaeruOC</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+<!--  xml row meeting  -->
+    <string name="text_meeting_hour_room">Meeting A - 15h00 - Mario</string>
+    <string name="text_mail">contact@lamzone.fr</string>
+    <string name="content_description_button_delete">button_delete</string>
 </resources>
