@@ -3,6 +3,7 @@ package com.pandamy.maeruoc.service;
 import com.pandamy.maeruoc.models.Meeting;
 import com.pandamy.maeruoc.models.Member;
 import com.pandamy.maeruoc.models.Room;
+import com.pandamy.maeruoc.models.RoomColor;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,18 +13,18 @@ public abstract class DummyGenerator {
 
     //List
     private static List<Meeting> dummyMeetings = Arrays.asList(
-            new Meeting(1, "Meeting A", "14:00", new Room(1,"Peach"), new Member(1, "Lea", "Chang", "lea@lamzone.com")),
-            new Meeting(2, "Meeting B", "16:00", new Room(2, "Mario"),new Member(3, "Haneul", "Zhang", "haneul@lamzone.com")),
-            new Meeting(3, "Meeting C", "19:00", new Room(3, "Luigi"),  new Member(7, "Hideki", "An", "hideki@lamzone.com")),
-            new Meeting(4, "Meeting D", "20:30", new Room(4, "Yoshi"), new Member(10, "Fuhao", "Barde", "fuhai@lamzone.com"))
+            new Meeting(1, "Meeting A", "14:00", new Room(1, "Peach", RoomColor.COLOR_YELLOW), new Member(1, "Lea", "Chang", "lea@lamzone.com")),
+            new Meeting(2, "Meeting B", "16:00", new Room(2, "Mario", RoomColor.COLOR_RED),new Member(3, "Haneul", "Zhang", "haneul@lamzone.com")),
+            new Meeting(3, "Meeting C", "19:00", new Room(3, "Luigi",RoomColor.COLOR_GREEN),  new Member(7, "Hideki", "An", "hideki@lamzone.com")),
+            new Meeting(4, "Meeting D", "20:30", new Room(4, "Yoshi",RoomColor.COLOR_BLUE), new Member(10, "Fuhao", "Barde", "fuhai@lamzone.com"))
     );
 
     private static List<Room> dummyRooms = Arrays.asList(
-            new Room(1, "Peach"),
-            new Room(2, "Mario"),
-            new Room(3, "Luigi"),
-            new Room(4, "Yoshi"),
-            new Room(5, "Bowser")
+            new Room(1, "Peach", RoomColor.COLOR_YELLOW),
+            new Room(2, "Mario", RoomColor.COLOR_RED),
+            new Room(3, "Luigi",RoomColor.COLOR_GREEN),
+            new Room(4, "Yoshi",RoomColor.COLOR_BLUE),
+            new Room(5, "Bowser",RoomColor.COLOR_BROWN)
     );
 
     private static List<Member> dummyMembers = Arrays.asList(

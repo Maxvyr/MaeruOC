@@ -11,4 +11,4 @@
     android:layout_marginRight="@dimen/dp16"
     app:layoutManager="LinearLayoutManager"
     tools:context=".ui.ListMeetingFragment"
-    tools:listitem="@layout/fragment_meeting" />
+    tools:listitem="@layout/row_meeting" />

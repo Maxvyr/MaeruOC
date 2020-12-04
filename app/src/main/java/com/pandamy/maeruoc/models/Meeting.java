@@ -4,15 +4,15 @@ public class Meeting {
     //variable:
     private int id;
     private String title;
-    private String hour;
+    private String date;
     private Room room;
     private Member member;
 
 
-    public Meeting(int id, String title, String hour, Room room, Member member) {
+    public Meeting(int id, String title, String date, Room room, Member member) {
         this.id = id;
         this.title = title;
-        this.hour = hour;
+        this.date = date;
         this.room = room;
         this.member = member;
     }
@@ -33,12 +33,12 @@ public class Meeting {
         this.title = title;
     }
 
-    public String getHour() {
-        return hour;
+    public String getDate() {
+        return date;
     }
 
-    public void setHour(String hour) {
-        this.hour = hour;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public Room getRoom() {
