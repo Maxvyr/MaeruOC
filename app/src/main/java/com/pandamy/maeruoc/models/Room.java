@@ -8,7 +8,12 @@ public class Room {
     private String name;
     private RoomColor color;
 
-    //Constructor
+    /**
+     * Construtor
+     * @param id an integer that corresponds to the id
+     * @param name a{@link String} that contains the name
+     * @param color a{@link RoomColor} that contains the color of the room
+     */
     public Room(int id, String name, RoomColor color){
         this.id = id;
         this.name = name;

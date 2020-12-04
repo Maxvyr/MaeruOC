@@ -40,7 +40,7 @@ public abstract class DummyGenerator {
             new Member(10, "Fuhao", "Barde", "fuhai@lamzone.com")
     );
 
-    // METHODS -------------------------------------------------------------------------------------
+    //methods:
 
     /**
      * Generates the dummy meetings

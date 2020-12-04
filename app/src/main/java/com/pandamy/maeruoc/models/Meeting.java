@@ -17,6 +17,7 @@ public class Meeting {
         this.member = member;
     }
 
+    //GET AND SET
     public int getId() {
         return id;
     }

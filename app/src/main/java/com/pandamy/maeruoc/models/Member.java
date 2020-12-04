@@ -8,14 +8,21 @@ public class Member {
     private String lastName;
     private String email;
 
-    //Constructor:
-    public Member(int id, String firstname, String lastName, String email) {
+    /**
+     * Construtor
+     * @param id an integer that corresponds to the id
+     * @param firstName a{@link String} that contains the first name
+     * @param lastName a{@link String} that contains the last name
+     * @param email a{@link String} that contains the email
+     */
+    public Member(int id, String firstName, String lastName, String email) {
         this.id = id;
-        this.firstName = firstname;
+        this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
     }
 
+    //GET AND SET
     public int getId() {
         return id;
     }
