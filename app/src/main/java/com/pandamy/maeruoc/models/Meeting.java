@@ -1,5 +1,15 @@
 package com.pandamy.maeruoc.models;
 
+/*
+    Models return Meeting.
+    @param id => id of meeting
+    @param title => title of the meeting
+    @param date => date of  the meeting
+    @param room => room use for the meeting
+    @param member => member call for the meeting
+ */
+
+
 public class Meeting {
     //variable:
     private int id;

@@ -1,5 +1,12 @@
 package com.pandamy.maeruoc.models;
 
+/*
+    Models Member.
+    @param id => id of member
+    @param firstName => first name of member
+    @param lastName => last name of member
+    @param email => email of member
+ */
 public class Member {
 
     //variable:

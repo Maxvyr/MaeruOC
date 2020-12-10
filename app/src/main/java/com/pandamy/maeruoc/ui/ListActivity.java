@@ -14,5 +14,13 @@ public class ListActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //instancie le fragment
+        Fragment listMeetingFragment = new ListMeetingFragment();
+
+        //affiche le fragment
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.container_main, listMeetingFragment);
+
     }
 }

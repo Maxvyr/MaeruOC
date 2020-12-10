@@ -1,6 +1,11 @@
 package com.pandamy.maeruoc.models;
 
-
+/*
+    Models Room
+    @param id => id of Room
+    @param name => name of Room
+    @param color => color of Room
+ */
 public class Room {
 
     //variable
