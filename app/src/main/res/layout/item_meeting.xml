@@ -9,12 +9,12 @@
 
     <View
         android:id="@+id/color_meeting"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/dp52"
+        android:layout_height="@dimen/dp52"
         android:background="@drawable/circle_shape"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginStart="@dimen/dp16"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_marginBottom="@dimen/dp10"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -27,16 +27,20 @@
         android:text="@string/text_meeting_hour_room"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/email"
+        app:layout_constraintEnd_toStartOf="@+id/item_list_delete_button"
+        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@+id/color_meeting"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/email"
-        android:text="@string/text_mail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
+        android:text="@string/text_mail"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/item_list_delete_button"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/color_meeting"
         app:layout_constraintTop_toBottomOf="@+id/room_name" />
 
@@ -44,7 +48,7 @@
         android:id="@+id/item_list_delete_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="@dimen/dp16"
         android:background="@null"
         android:contentDescription="@string/content_description_button_delete"
         app:layout_constraintBottom_toBottomOf="@+id/color_meeting"

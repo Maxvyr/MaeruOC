@@ -29,7 +29,7 @@ public class ListMeetingRecyclerViewAdapter extends RecyclerView.Adapter<ListMee
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_list_meeting, parent, false);
+                .inflate(R.layout.item_meeting, parent, false);
         return new ViewHolder(view);
     }
 
@@ -41,11 +41,8 @@ public class ListMeetingRecyclerViewAdapter extends RecyclerView.Adapter<ListMee
     holder.email.setText(meeting.getMember().getEmail());
 
 
-    holder.imageButton.setOnClickListener( new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                //todo delete meeting
-            }
+    holder.imageButton.setOnClickListener(v -> {
+        //todo delete meeting
     });
     }
 
