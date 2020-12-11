@@ -20,9 +20,9 @@ import java.util.List;
 public class ListActivity extends AppCompatActivity {
 
     //Variable
-    private ApiService apiService;
-    private List<Meeting> meetings;
-    private ListMeetingRecyclerViewAdapter adapter;
+    private ApiService apiService = DI.getApiService();
+    private List<Meeting> meetings = apiService.getMeetings();
+    private ListMeetingRecyclerViewAdapter adapter = new ListMeetingRecyclerViewAdapter(meetings);
     private RecyclerView recyclerViewMeeting;
 
     @Override
@@ -30,14 +30,7 @@ public class ListActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-        apiService = DI.getApiService();
-        meetings = apiService.getMeetings();
-        adapter = new ListMeetingRecyclerViewAdapter(meetings);
-
         configRV(adapter);
-
     }
 
     private void configRV(ListMeetingRecyclerViewAdapter adapter){
