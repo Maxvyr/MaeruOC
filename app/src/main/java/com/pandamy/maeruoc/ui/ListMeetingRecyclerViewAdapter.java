@@ -1,10 +1,12 @@
 package com.pandamy.maeruoc.ui;
 
+import android.app.Activity;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.DrawableWrapper;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,28 +14,38 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.pandamy.maeruoc.R;
+import com.pandamy.maeruoc.controller.CallbackDeleteMeeting;
+import com.pandamy.maeruoc.databinding.ActivityMainBinding;
+import com.pandamy.maeruoc.databinding.ItemMeetingBinding;
 import com.pandamy.maeruoc.models.Meeting;
 
 import java.util.List;
+import java.util.zip.Inflater;
 
 public class ListMeetingRecyclerViewAdapter extends RecyclerView.Adapter<ListMeetingRecyclerViewAdapter.ViewHolder> {
 
     private List<Meeting> meetings;
+    private Activity activity;
+    private CallbackDeleteMeeting callBack;
+    public static final String TAG = "ListMeetingRecyclerView";
 
 
     //Constructor
-    public ListMeetingRecyclerViewAdapter(List<Meeting> meetings){
+    public ListMeetingRecyclerViewAdapter(List<Meeting> meetings, Activity activity){
         this.meetings = meetings;
+        this.activity = activity;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_meeting, parent, false);
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        View view = inflater.inflate(R.layout.item_meeting, parent, false);
+//        itemMeetingBinding = DataBindingUtil.setContentView(activity,R.layout.item_meeting);
         return new ViewHolder(view);
     }
 
@@ -46,7 +58,9 @@ public class ListMeetingRecyclerViewAdapter extends RecyclerView.Adapter<ListMee
 
 
     holder.imageButton.setOnClickListener(v -> {
-        //todo delete meeting
+        Log.d(TAG, "click on Delete button");
+        //call callback for delete item
+        callBack.deleteMeeting(meeting);
     });
     }
 
@@ -56,13 +70,17 @@ public class ListMeetingRecyclerViewAdapter extends RecyclerView.Adapter<ListMee
     }
 
     public static class ViewHolder extends  RecyclerView.ViewHolder{
-        View colorMeeting = itemView.findViewById(R.id.color_meeting);
-        TextView roomName = itemView.findViewById(R.id.room_name);
-        TextView email = itemView.findViewById(R.id.email);
-        ImageButton imageButton = itemView.findViewById(R.id.item_list_delete_button);
+        View colorMeeting;
+        TextView roomName;
+        TextView email;
+        ImageButton imageButton;
 
-        public  ViewHolder(View view){
-            super(view);
+        public  ViewHolder(View itemView){
+            super(itemView);
+            colorMeeting = itemView.findViewById(R.id.color_meeting);
+            roomName = itemView.findViewById(R.id.room_name);
+            email = itemView.findViewById(R.id.email);
+            imageButton = itemView.findViewById(R.id.item_list_delete_button);
         }
     }
 }

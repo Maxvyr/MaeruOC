@@ -7,6 +7,7 @@ android {
     buildToolsVersion "30.0.2"
 
     viewBinding.enabled = true
+    dataBinding.enabled = true
 
     defaultConfig {
         applicationId "com.pandamy.maeruoc"
