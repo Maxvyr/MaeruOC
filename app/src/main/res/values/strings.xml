@@ -6,4 +6,5 @@
     <string name="text_meeting_hour_room">Meeting A - 15h00 - Mario</string>
     <string name="text_mail">contact@lamzone.fr</string>
     <string name="content_description_button_delete">button_delete</string>
+    <string name="rechercher">rechercher</string>
 </resources>
