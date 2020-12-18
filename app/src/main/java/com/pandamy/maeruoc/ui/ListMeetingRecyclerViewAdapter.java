@@ -1,12 +1,6 @@
 package com.pandamy.maeruoc.ui;
 
 import android.app.Activity;
-import android.content.res.TypedArray;
-import android.graphics.Color;
-import android.graphics.ColorFilter;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.DrawableWrapper;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,28 +8,24 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.pandamy.maeruoc.R;
-import com.pandamy.maeruoc.controller.CallbackDeleteMeeting;
-import com.pandamy.maeruoc.databinding.ActivityMainBinding;
-import com.pandamy.maeruoc.databinding.ItemMeetingBinding;
+import com.pandamy.maeruoc.controller.CallbackMeeting;
 import com.pandamy.maeruoc.models.Meeting;
 
 import java.util.List;
-import java.util.zip.Inflater;
 
 public class ListMeetingRecyclerViewAdapter extends RecyclerView.Adapter<ListMeetingRecyclerViewAdapter.ViewHolder> {
 
     private List<Meeting> meetings;
     private Activity activity;
-    private CallbackDeleteMeeting callBack;
+    private CallbackMeeting callBack;
     public static final String TAG = "ListMeetingRecyclerView";
 
 
     //Constructor
-    public ListMeetingRecyclerViewAdapter(List<Meeting> meetings, CallbackDeleteMeeting callBack){
+    public ListMeetingRecyclerViewAdapter(List<Meeting> meetings, CallbackMeeting callBack){
         this.meetings = meetings;
         this.callBack = callBack;
     }
