@@ -42,7 +42,7 @@ public class ListMeetingRecyclerViewAdapter extends RecyclerView.Adapter<ListMee
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Meeting meeting = meetings.get(position);
-    holder.colorMeeting.setBackgroundColor(meeting.getRoom().getColor().getIntColor());
+    holder.colorMeeting.getBackground().setTint(meeting.getRoom().getColor().getIntColor());
     holder.roomName.setText(meeting.getRoom().getName());
     holder.email.setText(meeting.getMember().getEmail());
 

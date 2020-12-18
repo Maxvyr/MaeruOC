@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <View
+    <ImageView
         android:id="@+id/color_meeting"
         android:layout_width="@dimen/dp52"
         android:layout_height="@dimen/dp52"
