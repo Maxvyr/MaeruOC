@@ -35,9 +35,9 @@ public class ListMeetingRecyclerViewAdapter extends RecyclerView.Adapter<ListMee
 
 
     //Constructor
-    public ListMeetingRecyclerViewAdapter(List<Meeting> meetings, Activity activity){
+    public ListMeetingRecyclerViewAdapter(List<Meeting> meetings, CallbackDeleteMeeting callBack){
         this.meetings = meetings;
-        this.activity = activity;
+        this.callBack = callBack;
     }
 
     @NonNull
