@@ -51,5 +51,6 @@ public class ListActivity extends AppCompatActivity implements CallbackDeleteMee
         Log.d(TAG, "deleteMeeting: ");
         meetings.remove(meeting);
         adapter.notifyDataSetChanged();
+        //replace notifyDataSetChanged with notifyItemRemove
     }
 }

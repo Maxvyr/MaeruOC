@@ -58,7 +58,6 @@ public class ListMeetingRecyclerViewAdapter extends RecyclerView.Adapter<ListMee
 
 
     holder.imageButton.setOnClickListener(v -> {
-        Log.d(TAG, "click on Delete button");
         //call callback for delete item
         callBack.deleteMeeting(meeting);
     });
