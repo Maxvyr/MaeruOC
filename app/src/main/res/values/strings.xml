@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">MaeruOC</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!--  xml row meeting  -->
     <string name="text_meeting_hour_room">Meeting A - 15h00 - Mario</string>
@@ -8,4 +7,13 @@
     <string name="content_description_button_delete">button_delete</string>
     <string name="rechercher">rechercher</string>
     <string name="but_add_new_meeting">but add new meeting</string>
+    <string name="topic">Topic :</string>
+    <string name="name">Name</string>
+    <string name="hour">Hour</string>
+    <string name="hour_base">09:09</string>
+    <string name="room">Room :</string>
+    <string name="member">Member :</string>
+    <string name="but_add_meeting_to_list">but add meeting to list</string>
+    <string name="nom_pr_nom">Hideki An</string>
+    <string name="color_user_replace_pic">color user replace pic</string>
 </resources>

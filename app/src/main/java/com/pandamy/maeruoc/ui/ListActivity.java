@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -39,7 +40,8 @@ public class ListActivity extends AppCompatActivity implements CallbackMeeting {
 
         //Open Add Meeting Activity
         fabAddMeeting.setOnClickListener(v -> {
-            AddMeetingActivity.navigateTo(this);
+            Intent intent = new Intent(this, AddMeetingActivity.class);
+            startActivity(intent);
         });
 
     }

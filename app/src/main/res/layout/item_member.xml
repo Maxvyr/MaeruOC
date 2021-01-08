@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/dp16">
+
+    <!-- IMAGE VIEW -->
+
+    <ImageView
+        android:id="@+id/color_user"
+        android:layout_width="@dimen/dp52"
+        android:layout_height="@dimen/dp52"
+        android:background="@drawable/circle_shape"
+        android:layout_marginStart="@dimen/dp16"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_marginBottom="@dimen/dp10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/color_user_replace_pic" />
+
+    <!-- BLOC: TEXT VIEW -->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/item_member_cl_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp16"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/color_user"
+        app:layout_constraintEnd_toStartOf="@id/item_member_cb_check" >
+
+        <!-- TEXT VIEW: First and Last names -->
+
+        <TextView
+            android:id="@+id/item_member_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="@dimen/dp24"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:text="@string/nom_pr_nom"
+            android:textStyle="bold" />
+
+        <!-- TEXT VIEW: Email -->
+
+        <TextView
+            android:id="@+id/item_member_tv_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/item_member_name"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/text_mail"
+            android:singleLine="true"
+            android:ellipsize="end"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- CHECK BOX -->
+
+    <CheckBox
+        android:id="@+id/item_member_cb_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp16"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/item_member_cl_text"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
