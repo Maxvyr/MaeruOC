@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
@@ -47,10 +48,10 @@ public class AddMeetingActivity extends AppCompatActivity implements CallbackMem
     private TextInputLayout textInputTopic;
     private FloatingActionButton fabAddToList;
     private Spinner spinnerRooms;
-    private static final String TAG = "AddMeetingActivity";
     private Button addMeetingHour;
     private int hoursPick, minutesPick;
-    private CallbackMeeting callback;
+    private static final String TAG = "AddMeetingActivity";
+    private static final String keyParcelable = "keyNewMeeting";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -160,8 +161,10 @@ public class AddMeetingActivity extends AppCompatActivity implements CallbackMem
                     roomSelected,
                     new Member(apiService.getMeetings().size() +1,"","","")
                     );
-
-            callback.addMeeting(newMeeting);
+            Log.e(TAG, "clickAddNewMeeting: " + newMeeting.getId());
+            Intent intent =  new Intent(this,ListActivity.class);
+            intent.putExtra(keyParcelable, newMeeting);
+            startActivity(intent);
         });
     }
 }

@@ -63,11 +63,4 @@ public class ListActivity extends AppCompatActivity implements CallbackMeeting {
         adapter.notifyDataSetChanged();
         //replace notifyDataSetChanged with notifyItemRemove
     }
-
-    @Override
-    public void addMeeting(Meeting meeting) {
-        Log.d(TAG, "addMeeting: ");
-        meetings.add(meeting);
-        adapter.notifyDataSetChanged();
-    }
 }
