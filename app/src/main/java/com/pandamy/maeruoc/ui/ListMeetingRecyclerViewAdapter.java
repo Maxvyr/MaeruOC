@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -14,11 +16,13 @@ import com.pandamy.maeruoc.R;
 import com.pandamy.maeruoc.controller.CallbackMeeting;
 import com.pandamy.maeruoc.models.Meeting;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class ListMeetingRecyclerViewAdapter extends RecyclerView.Adapter<ListMeetingRecyclerViewAdapter.ViewHolder> {
+public class ListMeetingRecyclerViewAdapter extends RecyclerView.Adapter<ListMeetingRecyclerViewAdapter.ViewHolder> implements Filterable {
 
     private List<Meeting> meetings;
+    private List<Meeting> meetingsFullList;
     private Activity activity;
     private CallbackMeeting callBack;
     public static final String TAG = "ListMeetingRecyclerView";
@@ -28,6 +32,8 @@ public class ListMeetingRecyclerViewAdapter extends RecyclerView.Adapter<ListMee
     public ListMeetingRecyclerViewAdapter(List<Meeting> meetings, CallbackMeeting callBack){
         this.meetings = meetings;
         this.callBack = callBack;
+        //permet d'avoir la liste fix
+        meetingsFullList = new ArrayList<>(meetings);
     }
 
     @NonNull
@@ -72,4 +78,51 @@ public class ListMeetingRecyclerViewAdapter extends RecyclerView.Adapter<ListMee
             imageButton = itemView.findViewById(R.id.item_list_delete_button);
         }
     }
+
+
+
+    @Override
+    public Filter getFilter() {
+        return meetingsFilter;
+    }
+
+    private Filter meetingsFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<Meeting> filteredList = new ArrayList<>();
+
+            if(constraint ==null || constraint.length() == 0) {
+                filteredList.addAll(meetingsFullList);
+            } else{
+                //en minuscule et suppr les espaces
+                String filterPattern = constraint.toString().toLowerCase().trim();
+
+                for(Meeting meeting : meetingsFullList){
+                    //avec le titre
+                    if(meeting.getTitle().toLowerCase().contains(filterPattern)){
+                        filteredList.add(meeting);
+                    }
+                    //avec le nom de la room
+                    if(meeting.getRoom().getName().toLowerCase().contains(filterPattern)){
+                        filteredList.add(meeting);
+                    }
+                    //avec la date
+                    if(meeting.getDate().contains(filterPattern)){
+                        filteredList.add(meeting);
+                    }
+
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            meetings.clear();
+            meetings.addAll((List) results.values);
+            notifyDataSetChanged();
+        }
+    };
 }

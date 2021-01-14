@@ -1,6 +1,7 @@
 package com.pandamy.maeruoc.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -52,27 +54,27 @@ public class ListActivity extends AppCompatActivity implements CallbackMeeting {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
-    }
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.filter_room: {
-                filterByRoomButton();
-                return true;
-            }
-            case R.id.filter_date: {
-                filterByDateButton();
-                return true;
-            }
-            case R.id.no_filter: {
-                displayMainMeetingsList();
-                return true;
-            }
-        }
-        return super.onOptionsItemSelected(item);
+        MenuItem searchItem = menu.findItem(R.id.search_filter);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+        searchView.setOnQueryTextListener(
+                new SearchView.OnQueryTextListener() {
+                                              @Override
+                                              public boolean onQueryTextSubmit(String query) {
+                                                  return false;
+                                              }
+
+                                              @Override
+                                              public boolean onQueryTextChange(String newText) {
+                                                  adapter.getFilter().filter(newText);
+                                                  return false;
+                                              }
+                                          }
+
+        );
+        return true;
     }
 
 

@@ -3,32 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/menu_activity_main_filter"
+        android:id="@+id/search_filter"
         android:icon="@drawable/ic_filter_list_24dp"
         app:showAsAction="ifRoom"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
         android:title="@string/filtrer">
-
-        <menu>
-
-            <item
-                android:id="@+id/filter_date"
-                android:icon="@drawable/ic_date_range_24dp"
-                app:showAsAction="ifRoom"
-                android:title="@string/filtrer_par_date"/>
-
-            <item
-                android:id="@+id/filter_room"
-                android:icon="@drawable/ic_meeting_room_24px"
-                app:showAsAction="ifRoom"
-                android:title="@string/filtrer_par_salle"/>
-            <item
-                android:id="@+id/no_filter"
-                android:icon="@drawable/ic_clear_24dp"
-                app:showAsAction="ifRoom"
-                android:title="@string/supprimer_les_filtres"/>
-
-        </menu>
-
     </item>
 
 </menu>
