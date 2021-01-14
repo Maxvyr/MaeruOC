@@ -21,6 +21,12 @@ public interface ApiService {
     List<Room> getRooms();
 
     /**
+     * Returns a {@link List} of {@link String}
+     * @return a {@link List} of {@link String}
+     */
+    List<String> getRoomsName();
+
+    /**
      * Returns a {@link List} of {@link Member}
      * @return a {@link List} of {@link Member}
      */

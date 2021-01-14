@@ -11,6 +11,7 @@ public class DummyApiService implements  ApiService {
     //variables:
     private List<Meeting> meetings = DummyGenerator.generatorOfDummyMeetings();
     private List<Room> rooms = DummyGenerator.generatorOfDummyRooms();
+    private List<String> roomsNames = DummyGenerator.getRoomsNameOfDummyRooms();
     private List<Member> members = DummyGenerator.generatorOfDummyMembers();
 
     //methods:
@@ -22,6 +23,11 @@ public class DummyApiService implements  ApiService {
     @Override
     public List<Room> getRooms() {
         return this.rooms;
+    }
+
+    @Override
+    public List<String> getRoomsName() {
+        return this.roomsNames;
     }
 
     @Override

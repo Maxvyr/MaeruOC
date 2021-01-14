@@ -58,6 +58,14 @@ public abstract class DummyGenerator {
         return new ArrayList<>(dummyRooms);
     }
 
+    public static List<String> getRoomsNameOfDummyRooms() {
+        List<String> nameOfRooms = new ArrayList<>();
+        for (Room room : dummyRooms) {
+            nameOfRooms.add(room.getName());
+        }
+        return nameOfRooms;
+    }
+
     /**
      * Generates the dummy members
      * @return a {@link List} of {@link Member}
