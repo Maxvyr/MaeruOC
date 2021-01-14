@@ -78,26 +78,14 @@ public class ListActivity extends AppCompatActivity implements CallbackMeeting {
 
 
     private void filterByRoomButton(){
-//        FilterByRoomDialog filterByRoomDialog = new FilterByRoomDialog();
-//        filterByRoomDialog.show(getSupportFragmentManager().beginTransaction(),"filterByRoomDialog");
-//        filterByRoomDialog.setFilterByRoomCallback(this);
     }
 
     private void filterByDateButton(){
-//        FilterByDateDialog filterByDateDialog = new FilterByDateDialog();
-//        filterByDateDialog.show(getSupportFragmentManager(),"filterByDateDialog");
-//        filterByDateDialog.setFilterByDateCallback(this);
     }
 
 
 
     public void displayMainMeetingsList(){
-//        MeetingsListFragment meetingsListFragment = (MeetingsListFragment) getSupportFragmentManager()
-//                .findFragmentById(R.id.activity_main_container);
-//
-//        if(meetingsListFragment != null) {
-//            meetingsListFragment.updateFilteredListByRoom(Di.getApiService().getMeetings());
-//        }
     }
 
     private void configRV(ListMeetingRecyclerViewAdapter adapter){
