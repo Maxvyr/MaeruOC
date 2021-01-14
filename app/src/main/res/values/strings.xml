@@ -16,8 +16,10 @@
     <string name="but_add_meeting_to_list">but add meeting to list</string>
     <string name="nom_pr_nom">Hideki An</string>
     <string name="color_user_replace_pic">color user replace pic</string>
-
-
+    <string name="filtrer_par_date">Filter by date</string>
+    <string name="filtrer_par_salle">Filter by room</string>
+    <string name="supprimer_les_filtres">delete all filters</string>
+    <string name="filtrer">Filtrer</string>
 
 
 </resources>

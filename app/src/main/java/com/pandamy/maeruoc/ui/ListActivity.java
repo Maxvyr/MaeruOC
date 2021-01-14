@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -44,6 +46,58 @@ public class ListActivity extends AppCompatActivity implements CallbackMeeting {
             startActivity(intent);
         });
 
+    }
+
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.filter_room: {
+                filterByRoomButton();
+                return true;
+            }
+            case R.id.filter_date: {
+                filterByDateButton();
+                return true;
+            }
+            case R.id.no_filter: {
+                displayMainMeetingsList();
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+
+    private void filterByRoomButton(){
+//        FilterByRoomDialog filterByRoomDialog = new FilterByRoomDialog();
+//        filterByRoomDialog.show(getSupportFragmentManager().beginTransaction(),"filterByRoomDialog");
+//        filterByRoomDialog.setFilterByRoomCallback(this);
+    }
+
+    private void filterByDateButton(){
+//        FilterByDateDialog filterByDateDialog = new FilterByDateDialog();
+//        filterByDateDialog.show(getSupportFragmentManager(),"filterByDateDialog");
+//        filterByDateDialog.setFilterByDateCallback(this);
+    }
+
+
+
+    public void displayMainMeetingsList(){
+//        MeetingsListFragment meetingsListFragment = (MeetingsListFragment) getSupportFragmentManager()
+//                .findFragmentById(R.id.activity_main_container);
+//
+//        if(meetingsListFragment != null) {
+//            meetingsListFragment.updateFilteredListByRoom(Di.getApiService().getMeetings());
+//        }
     }
 
     private void configRV(ListMeetingRecyclerViewAdapter adapter){
