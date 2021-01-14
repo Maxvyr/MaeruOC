@@ -13,10 +13,10 @@ public abstract class DummyGenerator {
 
     //List
     private static List<Meeting> dummyMeetings = Arrays.asList(
-            new Meeting(1, "Meeting A", "14:00", new Room(1, "Peach", RoomColor.COLOR_YELLOW), new Member(1, "Lea", "Chang", "lea@lamzone.com")),
-            new Meeting(2, "Meeting B", "16:00", new Room(2, "Mario", RoomColor.COLOR_RED),new Member(3, "Haneul", "Zhang", "haneul@lamzone.com")),
-            new Meeting(3, "Meeting C", "19:00", new Room(3, "Luigi",RoomColor.COLOR_GREEN),  new Member(7, "Hideki", "An", "hideki@lamzone.com")),
-            new Meeting(4, "Meeting D", "20:30", new Room(4, "Yoshi",RoomColor.COLOR_BLUE), new Member(10, "Fuhao", "Barde", "fuhai@lamzone.com"))
+            new Meeting(1, "Meeting A", "14:00", new Room(1, "Peach", RoomColor.COLOR_YELLOW), "lea@lamzone.com , jun@lamzone.com"),
+            new Meeting(2, "Meeting B", "16:00", new Room(2, "Mario", RoomColor.COLOR_RED),"haneul@lamzone.com , manchu@lamzone.com"),
+            new Meeting(3, "Meeting C", "19:00", new Room(3, "Luigi",RoomColor.COLOR_GREEN),  "hideki@lamzone.com , wang@lamzone.com"),
+            new Meeting(4, "Meeting D", "20:30", new Room(4, "Yoshi",RoomColor.COLOR_BLUE), "fuhai@lamzone.com , manchu@lamzone.com")
     );
 
     private static List<Room> dummyRooms = Arrays.asList(

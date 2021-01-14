@@ -44,7 +44,7 @@ public class ListMeetingRecyclerViewAdapter extends RecyclerView.Adapter<ListMee
         String txtMeeting = meeting.getTitle() + " - " + meeting.getDate() + " - " + meeting.getRoom().getName();
     holder.colorMeeting.getBackground().setTint(meeting.getRoom().getColor().getIntColor());
     holder.roomName.setText(txtMeeting);
-    holder.email.setText(meeting.getMember().getEmail());
+    holder.email.setText(meeting.getMember());
 
 
     holder.imageButton.setOnClickListener(v -> {

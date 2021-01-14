@@ -19,10 +19,10 @@ public class Meeting {
     private String title;
     private String date;
     private Room room;
-    private Member member;
+    private String member;
 
 
-    public Meeting(int id, String title, String date, Room room, Member member) {
+    public Meeting(int id, String title, String date, Room room, String member) {
         this.id = id;
         this.title = title;
         this.date = date;
@@ -63,11 +63,11 @@ public class Meeting {
         this.room = room;
     }
 
-    public Member getMember() {
+    public String getMember() {
         return member;
     }
 
-    public void setMember(Member member) {
+    public void setMember(String member) {
         this.member = member;
     }
 }

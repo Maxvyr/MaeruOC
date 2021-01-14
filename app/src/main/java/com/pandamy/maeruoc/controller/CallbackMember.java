@@ -1,5 +1,7 @@
 package com.pandamy.maeruoc.controller;
 
+import com.pandamy.maeruoc.models.Member;
+
 import java.util.List;
 
 public interface CallbackMember {

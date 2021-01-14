@@ -44,6 +44,7 @@ public class AddMeetingActivity extends AppCompatActivity implements CallbackMem
     private Toolbar toolbarAdd;
     private ApiService apiService = DI.getApiService();
     private List<Member> members = apiService.getMembers();
+    private List<String> membersEmail;
     private ListMemberRecyclerViewAdapter adapter = new ListMemberRecyclerViewAdapter(members, this);
     private RecyclerView recyclerViewMember;
     private EditText titleMeetingEdit;
@@ -52,7 +53,6 @@ public class AddMeetingActivity extends AppCompatActivity implements CallbackMem
     private Button addMeetingHour;
     private int hoursPick, minutesPick;
     private static final String TAG = "AddMeetingActivity";
-    private static final String keyParcelable = "keyNewMeeting";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +86,12 @@ public class AddMeetingActivity extends AppCompatActivity implements CallbackMem
      */
     @Override
     public void onClickCheckBox(int position) {
-
+        Member member = apiService.getMembers().get(position);
+        Log.d(TAG, "onClickCheckBox: member selected " + member.getEmail());
+        if(membersEmail == null){
+            membersEmail = new ArrayList<>();
+        }
+        membersEmail.add(member.getEmail());
     }
 
     /*
@@ -149,14 +154,23 @@ public class AddMeetingActivity extends AppCompatActivity implements CallbackMem
         //recover Room selected
         Room roomSelected = apiService.getRooms().get(spinnerRooms.getSelectedItemPosition());
         //Member selected
-        Member memberSelected = new Member(apiService.getMeetings().size() +1,"","","");
+        String memberSelectedEmail = membersEmail != null ? concatListEmail(membersEmail) : "pas de membres";
 
         return new Meeting(
                 apiService.getMeetings().size() + 1,
                 titleSelected,
                 dateSelected,
                 roomSelected,
-                memberSelected
+                memberSelectedEmail
         );
+    }
+
+    private String concatListEmail(List<String> emailList){
+        String concatenatedString = "";
+        String delimiter = " , ";
+        for (String word : emailList) {
+            concatenatedString += concatenatedString.equals("") ? word : delimiter + word;
+        }
+        return concatenatedString;
     }
 }
