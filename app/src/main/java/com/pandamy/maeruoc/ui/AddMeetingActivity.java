@@ -18,6 +18,7 @@ import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -45,7 +46,7 @@ public class AddMeetingActivity extends AppCompatActivity implements CallbackMem
     private List<Member> members = apiService.getMembers();
     private ListMemberRecyclerViewAdapter adapter = new ListMemberRecyclerViewAdapter(members, this);
     private RecyclerView recyclerViewMember;
-    private TextInputLayout textInputTopic;
+    private EditText titleMeetingEdit;
     private FloatingActionButton fabAddToList;
     private Spinner spinnerRooms;
     private Button addMeetingHour;
@@ -59,7 +60,7 @@ public class AddMeetingActivity extends AppCompatActivity implements CallbackMem
         setContentView(R.layout.activity_add_meeting);
         configRV(adapter);
         addMeetingHour = findViewById(R.id.add_meeting_b_hour);
-        textInputTopic = findViewById(R.id.add_meeting_text_input_layout);
+        titleMeetingEdit = findViewById(R.id.add_meeting_txt_topic);
         fabAddToList = findViewById(R.id.add_meeting_fab);
         spinnerRooms = findViewById(R.id.add_meeting_spinner_room);
 
@@ -86,24 +87,6 @@ public class AddMeetingActivity extends AppCompatActivity implements CallbackMem
     @Override
     public void onClickCheckBox(int position) {
 
-    }
-
-    /*
-        EditText
-     */
-    private void configureEditTextFromTextInputLayout() {
-        this.textInputTopic.getEditText().addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                textInputTopic.setError(null);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {}
-        });
     }
 
     /*
@@ -149,22 +132,31 @@ public class AddMeetingActivity extends AppCompatActivity implements CallbackMem
      */
     private void clickAddNewMeeting(){
         fabAddToList.setOnClickListener(v -> {
-            //transform date in string
-            String date = String.valueOf(hoursPick) + " : " + String.valueOf(minutesPick);
-            //recover Room selected
-            Room roomSelected = apiService.getRooms().get(spinnerRooms.getSelectedItemPosition());
-
-            Meeting newMeeting = new Meeting(
-                    apiService.getMeetings().size() + 1,
-                    "",
-                    date,
-                    roomSelected,
-                    new Member(apiService.getMeetings().size() +1,"","","")
-                    );
-            Log.e(TAG, "clickAddNewMeeting: " + newMeeting.getId());
+            Meeting meeting = newAddMeeting();
+            //add to list
+            apiService.addMeeting(meeting);
+            //open activity
             Intent intent =  new Intent(this,ListActivity.class);
-            intent.putExtra(keyParcelable, newMeeting);
             startActivity(intent);
         });
+    }
+
+    private Meeting newAddMeeting(){
+        //title meeting
+        String titleSelected = titleMeetingEdit.getText().toString().equals("") ? "NO TITLE" : titleMeetingEdit.getText().toString();
+        //date
+        String dateSelected = hoursPick + ":" + minutesPick;
+        //recover Room selected
+        Room roomSelected = apiService.getRooms().get(spinnerRooms.getSelectedItemPosition());
+        //Member selected
+        Member memberSelected = new Member(apiService.getMeetings().size() +1,"","","");
+
+        return new Meeting(
+                apiService.getMeetings().size() + 1,
+                titleSelected,
+                dateSelected,
+                roomSelected,
+                memberSelected
+        );
     }
 }

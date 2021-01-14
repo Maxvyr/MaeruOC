@@ -58,7 +58,7 @@ tools:context=".ui.AddMeetingActivity">
                 <!-- TEXT INPUT EDIT TEXT -->
 
                 <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/add_meeting_tiet_topic"
+                    android:id="@+id/add_meeting_txt_topic"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/name"

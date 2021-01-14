@@ -13,7 +13,7 @@ package com.pandamy.maeruoc.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Meeting implements Parcelable {
+public class Meeting {
     //variable:
     private int id;
     private String title;
@@ -29,36 +29,6 @@ public class Meeting implements Parcelable {
         this.room = room;
         this.member = member;
     }
-
-    protected Meeting(Parcel in) {
-        id = in.readInt();
-        title = in.readString();
-        date = in.readString();
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(id);
-        dest.writeString(title);
-        dest.writeString(date);
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    public static final Creator<Meeting> CREATOR = new Creator<Meeting>() {
-        @Override
-        public Meeting createFromParcel(Parcel in) {
-            return new Meeting(in);
-        }
-
-        @Override
-        public Meeting[] newArray(int size) {
-            return new Meeting[size];
-        }
-    };
 
     //GET AND SET
     public int getId() {
