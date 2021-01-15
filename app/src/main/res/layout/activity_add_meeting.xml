@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/add_meeting_coordinator_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.AddMeetingActivity">
+
     <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/add_meeting_coordinator_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.AddMeetingActivity">
@@ -191,6 +196,11 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
     <!-- FAB -->
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -201,11 +211,10 @@
         android:layout_margin="@dimen/dp16"
         android:contentDescription="@string/but_add_meeting_to_list"
         android:src="@drawable/ic_add_circle_outline_24px"
-        app:backgroundTint="@android:color/holo_green_dark"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:backgroundTint="@android:color/holo_green_dark" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
