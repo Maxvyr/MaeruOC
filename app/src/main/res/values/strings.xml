@@ -7,7 +7,7 @@
     <string name="content_description_button_delete">button_delete</string>
     <string name="rechercher">rechercher</string>
     <string name="but_add_new_meeting">but add new meeting</string>
-    <string name="topic">Topic :</string>
+    <string name="topic">Title :</string>
     <string name="name">Name</string>
     <string name="hour">Hour</string>
     <string name="hour_base">09:09</string>
