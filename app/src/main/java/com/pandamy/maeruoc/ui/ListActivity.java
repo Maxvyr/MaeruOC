@@ -103,7 +103,7 @@ public class ListActivity extends AppCompatActivity implements CallbackMeeting {
     @Override
     public void deleteMeeting(Meeting meeting) {
         Log.d(TAG, "deleteMeeting: ");
-        meetings.remove(meeting);
+        apiService.deleteMeeting(meeting);
         adapter.notifyDataSetChanged();
         //replace notifyDataSetChanged with notifyItemRemove
     }
