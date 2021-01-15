@@ -50,6 +50,9 @@ public class ListActivity extends AppCompatActivity implements CallbackMeeting {
         });
     }
 
+    /*
+        Block return previous Activity
+     */
     @Override
     public void onBackPressed() {
     }
