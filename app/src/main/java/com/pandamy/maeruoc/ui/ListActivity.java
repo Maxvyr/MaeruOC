@@ -50,17 +50,8 @@ public class ListActivity extends AppCompatActivity implements CallbackMeeting {
         });
     }
 
-    //update value RV whne back to this ActivtyActivity
     @Override
-    protected void onResume() {
-        super.onResume();
-        adapter.notifyDataSetChanged();
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-//        if(requestCode == keyRequest && )
+    public void onBackPressed() {
     }
 
     @Override

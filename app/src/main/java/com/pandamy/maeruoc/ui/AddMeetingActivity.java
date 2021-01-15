@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.util.Log;
@@ -189,6 +190,7 @@ public class AddMeetingActivity extends AppCompatActivity implements CallbackMem
         //add to list
         apiService.addMeeting(meeting);
         //return list Activity
-        finish();
+        Intent intent = new Intent(this, ListActivity.class);
+        startActivity(intent);
     }
 }
