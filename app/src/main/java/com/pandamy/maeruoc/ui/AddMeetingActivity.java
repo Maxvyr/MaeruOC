@@ -41,7 +41,6 @@ import java.util.List;
 
 public class AddMeetingActivity extends AppCompatActivity implements CallbackMember {
 
-    private Toolbar toolbarAdd;
     private ApiService apiService = DI.getApiService();
     private List<Member> members = apiService.getMembers();
     private List<String> membersEmail;
@@ -133,16 +132,15 @@ public class AddMeetingActivity extends AppCompatActivity implements CallbackMem
     }
 
     /*
-        click button add new meeting
-     */
+            click button add new meeting
+         */
     private void clickAddNewMeeting(){
         fabAddToList.setOnClickListener(v -> {
             Meeting meeting = newAddMeeting();
             //add to list
             apiService.addMeeting(meeting);
-            //open activity
-            Intent intent =  new Intent(this,ListActivity.class);
-            startActivity(intent);
+            //return list Activity
+            finish();
         });
     }
 

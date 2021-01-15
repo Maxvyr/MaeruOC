@@ -91,7 +91,7 @@ public class ListMeetingRecyclerViewAdapter extends RecyclerView.Adapter<ListMee
         protected FilterResults performFiltering(CharSequence constraint) {
             List<Meeting> filteredList = new ArrayList<>();
 
-            if(constraint ==null || constraint.length() == 0) {
+            if(constraint == null || constraint.length() == 0) {
                 filteredList.addAll(meetingsFullList);
             } else{
                 //en minuscule et suppr les espaces
@@ -110,7 +110,6 @@ public class ListMeetingRecyclerViewAdapter extends RecyclerView.Adapter<ListMee
                     if(meeting.getDate().contains(filterPattern)){
                         filteredList.add(meeting);
                     }
-
                 }
             }
             FilterResults results = new FilterResults();

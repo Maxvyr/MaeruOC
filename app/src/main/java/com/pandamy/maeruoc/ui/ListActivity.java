@@ -1,5 +1,6 @@
 package com.pandamy.maeruoc.ui;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -47,10 +48,20 @@ public class ListActivity extends AppCompatActivity implements CallbackMeeting {
             Intent intent = new Intent(this, AddMeetingActivity.class);
             startActivity(intent);
         });
-
     }
 
+    //update value RV whne back to this ActivtyActivity
+    @Override
+    protected void onResume() {
+        super.onResume();
+        adapter.notifyDataSetChanged();
+    }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+//        if(requestCode == keyRequest && )
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -61,33 +72,19 @@ public class ListActivity extends AppCompatActivity implements CallbackMeeting {
         SearchView searchView = (SearchView) searchItem.getActionView();
         searchView.setOnQueryTextListener(
                 new SearchView.OnQueryTextListener() {
-                                              @Override
-                                              public boolean onQueryTextSubmit(String query) {
-                                                  return false;
-                                              }
+                    @Override
+                    public boolean onQueryTextSubmit(String query) {
+                        return false;
+                    }
 
-                                              @Override
-                                              public boolean onQueryTextChange(String newText) {
-                                                  adapter.getFilter().filter(newText);
-                                                  return false;
-                                              }
-                                          }
-
+                    @Override
+                    public boolean onQueryTextChange(String newText) {
+                        adapter.getFilter().filter(newText);
+                        return false;
+                    }
+                }
         );
         return true;
-    }
-
-
-
-    private void filterByRoomButton(){
-    }
-
-    private void filterByDateButton(){
-    }
-
-
-
-    public void displayMainMeetingsList(){
     }
 
     private void configRV(ListMeetingRecyclerViewAdapter adapter){
@@ -98,13 +95,12 @@ public class ListActivity extends AppCompatActivity implements CallbackMeeting {
     }
 
     /*
-                Callback when user clikc on delete button
-            */
+      Callback when user clikc on delete button
+    */
     @Override
     public void deleteMeeting(Meeting meeting) {
         Log.d(TAG, "deleteMeeting: ");
         apiService.deleteMeeting(meeting);
         adapter.notifyDataSetChanged();
-        //replace notifyDataSetChanged with notifyItemRemove
     }
 }
