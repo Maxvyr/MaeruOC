@@ -9,7 +9,7 @@
         android:layout_height="match_parent"
         tools:context=".ui.AddMeetingActivity">
 
-        <!-- BLOC: TOPIC *********************************************************************** -->
+        <!-- TITLE *********************************************************************** -->
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/add_meeting_cl_topic"
@@ -104,7 +104,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <!-- BLOC: ROOM ************************************************************************ -->
+        <!-- ROOM ************************************************************************ -->
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/add_meeting_cl_room"
@@ -147,7 +147,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <!-- BLOC: MEMBERS ********************************************************************* -->
+        <!-- MEMBERS ********************************************************************* -->
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/add_meeting_cl_member"
