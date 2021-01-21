@@ -20,7 +20,7 @@
             android:id="@+id/add_meeting_cl_topic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp8"
+            android:layout_marginTop="@dimen/dp1"
             android:layout_marginStart="@dimen/dp16"
             android:layout_marginEnd="@dimen/dp16"
             app:layout_constraintTop_toTopOf="parent"
@@ -74,7 +74,7 @@
             android:id="@+id/add_meeting_cl_hour"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp8"
+            android:layout_marginTop="@dimen/dp1"
             android:layout_marginStart="@dimen/dp16"
             android:layout_marginEnd="@dimen/dp16"
             app:layout_constraintTop_toBottomOf="@id/add_meeting_cl_topic"
@@ -115,7 +115,7 @@
             android:id="@+id/add_meeting_cl_room"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp32"
+            android:layout_marginTop="@dimen/dp16"
             android:layout_marginStart="@dimen/dp16"
             android:layout_marginEnd="@dimen/dp16"
             app:layout_constraintTop_toBottomOf="@id/add_meeting_cl_hour"
@@ -176,7 +176,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:paddingBottom="@dimen/dp16"
+                android:paddingBottom="@dimen/dp8"
                 android:text="@string/member" />
 
             <!-- RECYCLER VIEW -->

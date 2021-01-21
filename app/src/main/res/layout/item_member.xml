@@ -23,48 +23,35 @@
         app:layout_constraintTop_toTopOf="parent"
         android:contentDescription="@string/color_user_replace_pic" />
 
-    <!-- BLOC: TEXT VIEW -->
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/item_member_cl_text"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp16"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/color_user"
-        app:layout_constraintEnd_toStartOf="@id/item_member_check" >
-
         <!-- TEXT VIEW: First and Last names -->
 
-        <TextView
-            android:id="@+id/item_member_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginStart="@dimen/dp24"
-            android:singleLine="true"
-            android:ellipsize="end"
-            android:text="@string/nom_pr_nom"
-            android:textStyle="bold" />
+    <!-- TEXT VIEW: Email -->
 
-        <!-- TEXT VIEW: Email -->
+    <TextView
+        android:id="@+id/item_member_name"
+        android:layout_width="@dimen/dp0"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="@string/nom_pr_nom"
+        android:layout_marginStart="@dimen/dp16"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/item_member_check"
+        app:layout_constraintStart_toEndOf="@+id/color_user"
+        app:layout_constraintTop_toTopOf="@+id/color_user" />
 
-        <TextView
-            android:id="@+id/item_member_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/item_member_name"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:text="@string/text_mail"
-            android:singleLine="true"
-            android:ellipsize="end"/>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/item_member_email"
+        android:layout_width="@dimen/dp0"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="@string/text_mail"
+        android:layout_marginStart="@dimen/dp16"
+        app:layout_constraintBottom_toBottomOf="@+id/color_user"
+        app:layout_constraintEnd_toStartOf="@+id/item_member_check"
+        app:layout_constraintStart_toEndOf="@+id/color_user"
+        app:layout_constraintTop_toBottomOf="@id/item_member_name" />
 
     <!-- CHECK BOX -->
 
@@ -73,9 +60,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp16"
+        android:layout_marginEnd="@dimen/dp52"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/item_member_cl_text"
         app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
