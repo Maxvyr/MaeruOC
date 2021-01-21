@@ -41,20 +41,14 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 @RunWith(AndroidJUnit4.class)
-public class ExampleInstrumentedTest {
+public class MeetingInstrumentedTest {
 
 
     //Variable
     private ListActivity mActivity;
     private final List<Meeting> meetingList = DummyGenerator.generatorOfDummyMeetings();
     private final int memberListSize = DummyGenerator.generatorOfDummyMembers().size();
-
-    @Test
-    public void useAppContext() {
-        // Context of the app under test.
-        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.pandamy.maeruoc", appContext.getPackageName());
-    }
+    private int meetingListSize = DummyGenerator.generatorOfDummyMeetings().size();
 
     @Rule
     public ActivityTestRule<ListActivity> mActivityRule =
@@ -74,7 +68,7 @@ public class ExampleInstrumentedTest {
     @Test
     public void meetingList_deleteAction_shouldRemoveItem() {
         //Given
-        final int itemsCount = meetingList.size();
+        final int itemsCount = meetingListSize;
         final int positionItem = itemsCount - 1;
         onView(withId(R.id.list_meetings)).check(withItemCount(itemsCount));
         onView(withId(R.id.list_meetings))
@@ -101,7 +95,6 @@ public class ExampleInstrumentedTest {
     @Test
     public void meetingList_clickAddMeetingButtin_shouldGotoPageAddMeetinh_thenAddMeeting() {
         //Given
-        final int itemsBegins = meetingList.size();
 
         //Click FAB to go to page add meeting
         onView(withId(R.id.fab_add_meeting)).perform(click());
@@ -126,7 +119,7 @@ public class ExampleInstrumentedTest {
         //RV have a new meetings
         onView(withId(R.id.list_meetings))
                 .check(matches(isDisplayed()))
-                .check(withItemCount(itemsBegins + 1));
+                .check(withItemCount(meetingListSize + 1));
     }
 
 
