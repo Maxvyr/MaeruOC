@@ -48,7 +48,6 @@ public class ExampleInstrumentedTest {
     private ListActivity mActivity;
     private final List<Meeting> meetingList = DummyGenerator.generatorOfDummyMeetings();
     private final int memberListSize = DummyGenerator.generatorOfDummyMembers().size();
-    private final int meetingListSize = DummyGenerator.generatorOfDummyMeetings().size();
 
     @Test
     public void useAppContext() {
