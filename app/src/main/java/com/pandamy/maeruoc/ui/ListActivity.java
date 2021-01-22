@@ -89,7 +89,7 @@ public class ListActivity extends AppCompatActivity implements CallbackMeeting {
     }
 
     /*
-      Callback when user clikc on delete button
+      Callback when user click on delete button
     */
     @Override
     public void deleteMeeting(Meeting meeting) {
