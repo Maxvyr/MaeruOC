@@ -26,6 +26,7 @@ import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.replaceText;
+import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
 import static androidx.test.espresso.matcher.ViewMatchers.assertThat;
@@ -74,7 +75,6 @@ public class MeetingInstrumentedTest {
     @Test
     public void meetingList_clickAddMeetingButtin_shouldGotoPageAddMeetinh_thenAddMeeting() {
         //Given
-
 
         //Click FAB to go to page add meeting
         onView(withId(R.id.fab_add_meeting)).perform(click());
@@ -125,5 +125,67 @@ public class MeetingInstrumentedTest {
         onView(withId(R.id.list_meetings))
                 .perform(actionOnItemAtPosition(positionItem, new DeleteViewAction()));
         onView(withId(R.id.list_meetings)).check(withItemCount(itemsCount - 1));
+    }
+
+
+
+    /**
+     * Filter meeting by name of Meetings
+     */
+    @Test
+    public void meetingList_filterAction_byMeetingName() {
+
+        //click on button search
+        onView(withId(R.id.search_filter))
+                .perform(click());
+
+        //search meeting by name
+        onView(withId(R.id.search_src_text))
+                .perform(typeText("Meeting A"));
+
+        //check result
+        onView(withId(R.id.list_meetings))
+                .check(matches(isDisplayed()))
+                .check(withItemCount(1));
+    }
+
+    /**
+     * Filter meeting by date
+     */
+    @Test
+    public void meetingList_filterAction_byDate() {
+
+        //click on button search
+        onView(withId(R.id.search_filter))
+                .perform(click());
+
+        //search meeting by name
+        onView(withId(R.id.search_src_text))
+                .perform(typeText("20:30"));
+
+        //check result
+        onView(withId(R.id.list_meetings))
+                .check(matches(isDisplayed()))
+                .check(withItemCount(1));
+    }
+
+    /**
+     * Filter meeting by room
+     */
+    @Test
+    public void meetingList_filterAction_byRoomName() {
+
+        //click on button search
+        onView(withId(R.id.search_filter))
+                .perform(click());
+
+        //search meeting by name
+        onView(withId(R.id.search_src_text))
+                .perform(typeText("Mario"));
+
+        //check result
+        onView(withId(R.id.list_meetings))
+                .check(matches(isDisplayed()))
+                .check(withItemCount(1));
     }
 }
