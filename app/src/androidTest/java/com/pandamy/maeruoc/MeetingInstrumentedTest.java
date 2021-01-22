@@ -12,10 +12,12 @@ import com.pandamy.maeruoc.ui.ListActivity;
 import com.pandamy.maeruoc.utils.AddMemberViewAction;
 import com.pandamy.maeruoc.utils.DeleteViewAction;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.*;
 
 import java.util.List;
 
@@ -68,7 +70,7 @@ public class MeetingInstrumentedTest {
     @Test
     public void meetingList_deleteAction_shouldRemoveItem() {
         //Given
-        final int itemsCount = meetingListSize;
+        final int itemsCount = 4;
         final int positionItem = itemsCount - 1;
         onView(withId(R.id.list_meetings)).check(withItemCount(itemsCount));
         onView(withId(R.id.list_meetings))
@@ -121,6 +123,4 @@ public class MeetingInstrumentedTest {
                 .check(matches(isDisplayed()))
                 .check(withItemCount(meetingListSize + 1));
     }
-
-
 }

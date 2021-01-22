@@ -60,7 +60,7 @@ public class AddMeetingActivity extends AppCompatActivity implements CallbackMem
 
         configureRoomSpinner();
         choiceHourMeeting();
-        clickAddNewMeeting();
+        setClickAddNewMeeting();
 
 
     }
@@ -135,13 +135,15 @@ public class AddMeetingActivity extends AppCompatActivity implements CallbackMem
     /*
             click button add new meeting
          */
-    private void clickAddNewMeeting(){
+    private void setClickAddNewMeeting(){
         fabAddToList.setOnClickListener(v -> {
             verifDataBeforeAdd();
         });
     }
 
     private Meeting newAddMeeting(){
+        //id
+        int id = apiService.getMeetings().size() + 1;
         //title meeting
         String titleSelected = titleMeetingEdit.getText().toString();
         //date
@@ -151,13 +153,7 @@ public class AddMeetingActivity extends AppCompatActivity implements CallbackMem
         //Member selected
         String memberSelectedEmail = concatListEmail(membersEmail);
 
-        return new Meeting(
-                apiService.getMeetings().size() + 1,
-                titleSelected,
-                dateSelected,
-                roomSelected,
-                memberSelectedEmail
-        );
+        return apiService.createMeeting(id,titleSelected,dateSelected,roomSelected,memberSelectedEmail);
     }
 
     private String concatListEmail(List<String> emailList){

@@ -3,6 +3,8 @@ package com.pandamy.maeruoc;
 
 import com.pandamy.maeruoc.di.DI;
 import com.pandamy.maeruoc.models.Meeting;
+import com.pandamy.maeruoc.models.Room;
+import com.pandamy.maeruoc.models.RoomColor;
 import com.pandamy.maeruoc.service.ApiService;
 
 import org.junit.Before;
@@ -33,10 +35,10 @@ public class MeetingServiceTest {
      */
     @Test
     public void deleteMeetingWithSuccess() {
-        Meeting MeetingToDelete = service.getMeetings().get(0);
-        List<Meeting> MeetingList = service.getMeetings();
-        service.deleteMeeting(MeetingToDelete);
-        assertFalse(MeetingList.contains(MeetingToDelete));
+        Meeting meetingToDelete = service.getMeetings().get(0);
+        List<Meeting> meetingList = service.getMeetings();
+        service.deleteMeeting(meetingToDelete);
+        assertFalse(meetingList.contains(meetingToDelete));
     }
 
 
@@ -45,9 +47,20 @@ public class MeetingServiceTest {
      */
     @Test
     public void addMeetingWithSuccess() {
-        Meeting MeetingToAdd = service.getMeetings().get(0);
-        service.addMeeting(MeetingToAdd);
-        List<Meeting> MeetingList = service.getMeetings();
-        assertTrue(MeetingList.contains(MeetingToAdd));
+        Meeting meetingToAdd = new Meeting(9999, "Meeting test", "23:23", new Room(5, "Bowser",RoomColor.COLOR_BROWN), "fa@lamzone.com");
+        List<Meeting> meetingList = service.getMeetings();
+        service.addMeeting(meetingToAdd);
+        assertTrue(meetingList.contains(meetingToAdd));
+    }
+
+    /**
+     * Create Meeting with success
+     */
+    @Test
+    public void createNewMeetingWithSuccess() {
+        List<Meeting> meetingList = service.getMeetings();
+        Meeting meetingCreated = service.createMeeting(100,"Created","00:23",new Room(5, "Bowser",RoomColor.COLOR_BROWN),"kaori@lamzone.com");
+        service.addMeeting(meetingCreated);
+        assertTrue(meetingList.contains(meetingCreated));
     }
 }

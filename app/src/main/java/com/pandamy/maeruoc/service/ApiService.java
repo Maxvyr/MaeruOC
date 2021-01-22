@@ -45,5 +45,14 @@ public interface ApiService {
      */
     void deleteMeeting(Meeting meeting);
 
+    /**
+     * Deletes the {@link Meeting} in argument
+     * @param title
+     * @param date
+     * @param room
+     * @param members
+     */
+    Meeting createMeeting(int id,String title, String date, Room room, String members);
+
 
 }

@@ -44,4 +44,15 @@ public class DummyApiService implements  ApiService {
     public void deleteMeeting(Meeting meeting) {
         this.meetings.remove(meeting);
     }
+
+    @Override
+    public Meeting createMeeting(int id, String title, String date, Room room, String membersEmail) {
+        return new Meeting(
+                id,
+                title,
+                date,
+                room,
+                membersEmail
+        );
+    }
 }
