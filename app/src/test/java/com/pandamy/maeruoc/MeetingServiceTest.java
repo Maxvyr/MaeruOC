@@ -49,7 +49,13 @@ public class MeetingServiceTest {
      */
     @Test
     public void addMeetingWithSuccess() {
-        Meeting meetingToAdd = new Meeting(9999, "Meeting test", "23:23", new Room(5, "Bowser",RoomColor.COLOR_BROWN), "fa@lamzone.com");
+        Meeting meetingToAdd = new Meeting(
+                9999,
+                "Meeting test",
+                "23:23",
+                new Room(5, "Bowser",RoomColor.COLOR_BROWN),
+                "fa@lamzone.com"
+        );
         List<Meeting> meetingList = service.getMeetings();
         service.addMeeting(meetingToAdd);
         assertTrue(meetingList.contains(meetingToAdd));
@@ -61,7 +67,13 @@ public class MeetingServiceTest {
     @Test
     public void createNewMeetingWithSuccess() {
         List<Meeting> meetingList = service.getMeetings();
-        Meeting meetingCreated = service.createMeeting(100,"Created","00:23",new Room(5, "Bowser",RoomColor.COLOR_BROWN),"kaori@lamzone.com");
+        Meeting meetingCreated = service.createMeeting(
+                100,
+                "Created",
+                "00:23",
+                new Room(5, "Bowser",RoomColor.COLOR_BROWN),
+                "kaori@lamzone.com"
+        );
         service.addMeeting(meetingCreated);
         assertTrue(meetingList.contains(meetingCreated));
     }
