@@ -132,13 +132,30 @@ public class AddMeetingActivity extends AppCompatActivity implements CallbackMem
         });
     }
 
+
     /*
-            click button add new meeting
-         */
+     * click button add new meeting
+     */
     private void setClickAddNewMeeting(){
         fabAddToList.setOnClickListener(v -> {
             verifDataBeforeAdd();
         });
+    }
+
+    private void verifDataBeforeAdd(){
+        //to avoid user create meeting with only spacebar
+        String title = titleMeetingEdit.getText().toString().trim();
+
+        if(title.equals("")){
+            showSnackbar("Il manque le titre");
+        } else if (!isTimePick){
+            showSnackbar("Il manque l'heure");
+        } else if (membersEmail == null){
+            showSnackbar("Aucun membre sélectionner");
+        } else {
+            Meeting meeting = newAddMeeting();
+            addMeetingAndReturn(meeting);
+        }
     }
 
     private Meeting newAddMeeting(){
@@ -163,23 +180,6 @@ public class AddMeetingActivity extends AppCompatActivity implements CallbackMem
             concatenatedString += concatenatedString.equals("") ? word : delimiter + word;
         }
         return concatenatedString;
-    }
-
-    private void verifDataBeforeAdd(){
-        if(titleMeetingEdit.getText().toString().equals("")){
-            showSnackbar("Il manque le titre");
-        } else {
-            if(!isTimePick){
-                showSnackbar("Il manque l'heure");
-            } else {
-                if(membersEmail == null){
-                    showSnackbar("Aucun membre sélectionner");
-                } else {
-                    Meeting meeting = newAddMeeting();
-                    addMeetingAndReturn(meeting);
-                }
-            }
-        }
     }
 
     private void addMeetingAndReturn(Meeting meeting){
