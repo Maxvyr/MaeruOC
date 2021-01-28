@@ -36,13 +36,11 @@ public class ListActivity extends AppCompatActivity implements CallbackMeeting {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         configRV(adapter);
         View view;
         fabAddMeeting = findViewById(R.id.fab_add_meeting);
-
         //Open Add Meeting Activity
         fabAddMeeting.setOnClickListener(v -> {
             Intent intent = new Intent(this, AddMeetingActivity.class);

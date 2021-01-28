@@ -9,10 +9,6 @@ package com.pandamy.maeruoc.models;
     @param member => member call for the meeting
  */
 
-
-import android.os.Parcel;
-import android.os.Parcelable;
-
 public class Meeting {
     //variable:
     private int id;

@@ -48,15 +48,14 @@ public class ListMeetingRecyclerViewAdapter extends RecyclerView.Adapter<ListMee
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Meeting meeting = meetings.get(position);
         String txtMeeting = meeting.getTitle() + " - " + meeting.getDate() + " - " + meeting.getRoom().getName();
-    holder.colorMeeting.getBackground().setTint(meeting.getRoom().getColor().getIntColor());
-    holder.roomName.setText(txtMeeting);
-    holder.email.setText(meeting.getMember());
+        holder.colorMeeting.getBackground().setTint(meeting.getRoom().getColor().getIntColor());
+        holder.roomName.setText(txtMeeting);
+        holder.email.setText(meeting.getMember());
 
-
-    holder.imageButton.setOnClickListener(v -> {
-        //call callback for delete item
-        callBack.deleteMeeting(meeting);
-    });
+        holder.imageButton.setOnClickListener(v -> {
+            //call callback for delete item
+            callBack.deleteMeeting(meeting);
+        });
     }
 
     @Override

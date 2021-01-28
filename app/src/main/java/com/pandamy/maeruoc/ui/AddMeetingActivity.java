@@ -61,8 +61,6 @@ public class AddMeetingActivity extends AppCompatActivity implements CallbackMem
         configureRoomSpinner();
         choiceHourMeeting();
         setClickAddNewMeeting();
-
-
     }
 
 
@@ -87,6 +85,9 @@ public class AddMeetingActivity extends AppCompatActivity implements CallbackMem
         spinnerRooms.setAdapter(adapter);
     }
 
+    /*
+        Configures Snackbar
+     */
     private void showSnackbar(String text){
         Snackbar snackbar = Snackbar.make(coordinatorLayout, text, Snackbar.LENGTH_LONG);
         snackbar.show();
@@ -134,7 +135,7 @@ public class AddMeetingActivity extends AppCompatActivity implements CallbackMem
 
 
     /*
-     * click button add new meeting
+        Click button add new meeting
      */
     private void setClickAddNewMeeting(){
         fabAddToList.setOnClickListener(v -> {
@@ -142,6 +143,9 @@ public class AddMeetingActivity extends AppCompatActivity implements CallbackMem
         });
     }
 
+    /*
+        Verif Data before add meeting
+     */
     private void verifDataBeforeAdd(){
         //to avoid user create meeting with only spacebar
         String title = titleMeetingEdit.getText().toString().trim();
@@ -153,12 +157,15 @@ public class AddMeetingActivity extends AppCompatActivity implements CallbackMem
         } else if (membersEmail == null){
             showSnackbar("Aucun membre sélectionner");
         } else {
-            Meeting meeting = newAddMeeting();
-            addMeetingAndReturn(meeting);
+            Meeting meeting = createNewMeeting();
+            addMeetingToListAndReturn(meeting);
         }
     }
 
-    private Meeting newAddMeeting(){
+    /*
+        Create a new meeting
+    */
+    private Meeting createNewMeeting(){
         //id
         int id = apiService.getMeetings().size() + 1;
         //title meeting
@@ -182,7 +189,7 @@ public class AddMeetingActivity extends AppCompatActivity implements CallbackMem
         return concatenatedString;
     }
 
-    private void addMeetingAndReturn(Meeting meeting){
+    private void addMeetingToListAndReturn(Meeting meeting){
         //add to list
         apiService.addMeeting(meeting);
         //return list Activity

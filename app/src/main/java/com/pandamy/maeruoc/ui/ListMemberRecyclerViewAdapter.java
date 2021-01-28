@@ -48,11 +48,10 @@ public class ListMemberRecyclerViewAdapter extends RecyclerView.Adapter<ListMemb
         holder.memberName.setText(memberFLName);
         holder.email.setText(member.getEmail());
 
-
-    holder.checkBox.setOnClickListener(v -> {
-        //call callback checkbox
-        callBack.onClickCheckBox(position);
-    });
+        holder.checkBox.setOnClickListener(v -> {
+            //call callback checkbox
+            callBack.onClickCheckBox(position);
+        });
     }
 
     @Override
