@@ -19,6 +19,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.*;
+import org.junit.runners.MethodSorters;
 
 import java.util.List;
 
@@ -41,6 +42,7 @@ import static org.junit.Assert.*;
 
 
 @RunWith(AndroidJUnit4.class)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class MeetingInstrumentedTest {
 
 
@@ -63,7 +65,7 @@ public class MeetingInstrumentedTest {
      * We ensure that our recyclerview is displaying at least on item
      */
     @Test
-    public void meetingList_shouldNotBeEmpty() {
+    public void A_meetingList_shouldNotBeEmpty() {
         onView(withId(R.id.list_meetings))
                 .check(matches(hasMinimumChildCount(1)));
     }
@@ -73,7 +75,7 @@ public class MeetingInstrumentedTest {
      * then add new meeting
      */
     @Test
-    public void meetingList_clickAddMeetingButtin_shouldGotoPageAddMeetinh_thenAddMeeting() {
+    public void B_meetingList_clickAddMeetingButton_shouldGotoPageAddMeeting_thenAddMeeting() {
         //Given
 
         //Click FAB to go to page add meeting
@@ -117,9 +119,9 @@ public class MeetingInstrumentedTest {
      * When we delete an item, the item is no more shown
      */
     @Test
-    public void meetingList_deleteAction_shouldRemoveItem() {
+    public void C_meetingList_deleteAction_shouldRemoveItem() {
         //Given
-        final int itemsCount = 4;
+        final int itemsCount = 5;
         final int positionItem = itemsCount - 1;
         onView(withId(R.id.list_meetings)).check(withItemCount(itemsCount));
         onView(withId(R.id.list_meetings))
@@ -133,7 +135,7 @@ public class MeetingInstrumentedTest {
      * Filter meeting by name of Meetings
      */
     @Test
-    public void meetingList_filterAction_byMeetingName() {
+    public void D_meetingList_filterAction_byMeetingName() {
 
         //click on button search
         onView(withId(R.id.search_filter))
@@ -147,13 +149,17 @@ public class MeetingInstrumentedTest {
         onView(withId(R.id.list_meetings))
                 .check(matches(isDisplayed()))
                 .check(withItemCount(1));
+
+        //delete name
+        onView(withId(R.id.search_src_text))
+                .perform(replaceText(""));
     }
 
     /**
      * Filter meeting by date
      */
     @Test
-    public void meetingList_filterAction_byDate() {
+    public void E_meetingList_filterAction_byDate() {
 
         //click on button search
         onView(withId(R.id.search_filter))
@@ -167,13 +173,17 @@ public class MeetingInstrumentedTest {
         onView(withId(R.id.list_meetings))
                 .check(matches(isDisplayed()))
                 .check(withItemCount(1));
+
+        //delete name
+        onView(withId(R.id.search_src_text))
+                .perform(replaceText(""));
     }
 
     /**
      * Filter meeting by room
      */
     @Test
-    public void meetingList_filterAction_byRoomName() {
+    public void F_meetingList_filterAction_byRoomName() {
 
         //click on button search
         onView(withId(R.id.search_filter))
@@ -187,5 +197,9 @@ public class MeetingInstrumentedTest {
         onView(withId(R.id.list_meetings))
                 .check(matches(isDisplayed()))
                 .check(withItemCount(1));
+
+        //delete name
+        onView(withId(R.id.search_src_text))
+                .perform(replaceText(""));
     }
 }
