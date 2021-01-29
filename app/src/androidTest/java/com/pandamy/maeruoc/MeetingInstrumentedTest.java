@@ -102,10 +102,6 @@ public class MeetingInstrumentedTest {
                 .perform(actionOnItemAtPosition(0,
                         new AddMemberViewAction(R.id.item_member_check)));
 
-        //Scroll tho the end of the page
-        onView(withId(R.id.scroll_view_add_meeting_activity))
-                .perform(ViewActions.swipeUp());
-
         //FAB button for add
         onView(withId(R.id.add_meeting_fab)).perform(click());
 
