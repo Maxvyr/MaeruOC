@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
-    android:id="@+id/scroll_view_add_meeting_activity"
+
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    android:id="@+id/add_meeting_coordinator_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".ui.AddMeetingActivity"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.AddMeetingActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:id="@+id/add_meeting_coordinator_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:context=".ui.AddMeetingActivity">
+<ScrollView
+    android:id="@+id/scroll_view_add_meeting_activity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:paddingHorizontal="@dimen/dp10"
             tools:context=".ui.AddMeetingActivity">
 
@@ -146,22 +147,24 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <!-- FAB -->
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/add_meeting_fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="@dimen/dp16"
-            android:contentDescription="@string/but_add_meeting_to_list"
-            android:src="@drawable/ic_add_circle_outline_24px"
-            app:backgroundTint="@android:color/holo_green_dark" />
+    </ScrollView>
+
+    <!-- FAB -->
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_meeting_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/dp16"
+        android:contentDescription="@string/but_add_meeting_to_list"
+        android:src="@drawable/ic_add_circle_outline_24px"
+        app:backgroundTint="@android:color/holo_green_dark" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-</ScrollView>
 
 
 
