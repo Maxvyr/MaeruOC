@@ -93,7 +93,7 @@ public class ListMeetingRecyclerViewAdapter extends RecyclerView.Adapter<ListMee
             if(constraint == null || constraint.length() == 0) {
                 filteredList.addAll(meetingsFullList);
             } else{
-                //en minuscule et suppr les espaces
+                //en minuscule et supprimer les espaces
                 String filterPattern = constraint.toString().toLowerCase().trim();
 
                 for(Meeting meeting : meetingsFullList){

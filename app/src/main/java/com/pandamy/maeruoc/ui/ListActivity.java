@@ -39,7 +39,6 @@ public class ListActivity extends AppCompatActivity implements CallbackMeeting {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         configRV(adapter);
-        View view;
         fabAddMeeting = findViewById(R.id.fab_add_meeting);
         //Open Add Meeting Activity
         fabAddMeeting.setOnClickListener(v -> {
