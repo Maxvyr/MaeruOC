@@ -23,7 +23,6 @@ public class ListMeetingRecyclerViewAdapter extends RecyclerView.Adapter<ListMee
 
     private List<Meeting> meetings;
     private List<Meeting> meetingsFullList;
-    private Activity activity;
     private CallbackMeeting callBack;
     public static final String TAG = "ListMeetingRecyclerView";
 
