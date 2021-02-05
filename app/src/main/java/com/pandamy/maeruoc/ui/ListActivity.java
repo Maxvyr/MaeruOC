@@ -45,14 +45,8 @@ public class ListActivity extends AppCompatActivity implements CallbackMeeting {
         fabAddMeeting.setOnClickListener(v -> {
             Intent intent = new Intent(this, AddMeetingActivity.class);
             startActivity(intent);
+            finish();
         });
-    }
-
-    /*
-        Block return previous Activity
-     */
-    @Override
-    public void onBackPressed() {
     }
 
     @Override
