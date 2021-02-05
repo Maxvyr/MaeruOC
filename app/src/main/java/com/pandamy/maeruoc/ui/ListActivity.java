@@ -29,7 +29,7 @@ public class ListActivity extends AppCompatActivity implements CallbackMeeting {
     //Variable
     private ApiService apiService = DI.getApiService();
     private List<Meeting> meetings = apiService.getMeetings();
-    private ListMeetingRecyclerViewAdapter adapter = new ListMeetingRecyclerViewAdapter(meetings, this);
+    private ListMeetingRecyclerViewAdapter adapter;
     private RecyclerView recyclerViewMeeting;
     private FloatingActionButton fabAddMeeting;
     private static final String TAG = "ListActivity";
@@ -38,6 +38,7 @@ public class ListActivity extends AppCompatActivity implements CallbackMeeting {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        adapter = new ListMeetingRecyclerViewAdapter(meetings, this);
         configRV(adapter);
         fabAddMeeting = findViewById(R.id.fab_add_meeting);
         //Open Add Meeting Activity
@@ -86,8 +87,8 @@ public class ListActivity extends AppCompatActivity implements CallbackMeeting {
     }
 
     /*
-      Callback when user click on delete button
-    */
+     * Callback when user click on delete button
+     */
     @Override
     public void deleteMeeting(Meeting meeting) {
         Log.d(TAG, "deleteMeeting: ");

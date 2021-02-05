@@ -72,7 +72,7 @@ public class AddMeetingActivity extends AppCompatActivity implements CallbackMem
     }
 
     /*
-        Configures the spinner list room
+     * Configures the spinner list room
      */
     private void configureRoomSpinner() {
         // Adapter
@@ -86,7 +86,7 @@ public class AddMeetingActivity extends AppCompatActivity implements CallbackMem
     }
 
     /*
-        Configures Snackbar
+     * Configures Snackbar
      */
     private void showSnackbar(String text){
         Snackbar snackbar = Snackbar.make(coordinatorLayout, text, Snackbar.LENGTH_LONG);
@@ -94,7 +94,7 @@ public class AddMeetingActivity extends AppCompatActivity implements CallbackMem
     }
 
     /*
-        Callback when user click on add member to meeting
+     * Callback when user click on add member to meeting
      */
     @Override
     public void onClickCheckBox(int position) {
@@ -108,7 +108,7 @@ public class AddMeetingActivity extends AppCompatActivity implements CallbackMem
 
 
     /*
-        Choice hour meeting
+     * Choice hour meeting
      */
     private void choiceHourMeeting(){
         addMeetingHour.setOnClickListener(v -> {
@@ -135,7 +135,7 @@ public class AddMeetingActivity extends AppCompatActivity implements CallbackMem
 
 
     /*
-        Click button add new meeting
+     * Click button add new meeting
      */
     private void setClickAddNewMeeting(){
         fabAddToList.setOnClickListener(v -> {
@@ -144,7 +144,7 @@ public class AddMeetingActivity extends AppCompatActivity implements CallbackMem
     }
 
     /*
-        Verif Data before add meeting
+     * Verif Data before add meeting
      */
     private void verifDataBeforeAdd(){
         //to avoid user create meeting with only spacebar
@@ -163,8 +163,8 @@ public class AddMeetingActivity extends AppCompatActivity implements CallbackMem
     }
 
     /*
-        Create a new meeting
-    */
+     * Create a new meeting
+     */
     private Meeting createNewMeeting(){
         //id
         int id = apiService.getMeetings().size() + 1;

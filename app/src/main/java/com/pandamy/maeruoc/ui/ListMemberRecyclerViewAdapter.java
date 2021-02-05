@@ -22,7 +22,6 @@ import java.util.List;
 public class ListMemberRecyclerViewAdapter extends RecyclerView.Adapter<ListMemberRecyclerViewAdapter.ViewHolder> {
 
     private List<Member> members;
-    private Activity activity;
     private CallbackMember callBack;
     public static final String TAG = "ListMeetingRecyclerView";
 
