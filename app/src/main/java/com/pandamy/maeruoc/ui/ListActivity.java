@@ -45,7 +45,6 @@ public class ListActivity extends AppCompatActivity implements CallbackMeeting {
         fabAddMeeting.setOnClickListener(v -> {
             Intent intent = new Intent(this, AddMeetingActivity.class);
             startActivity(intent);
-            finish();
         });
     }
 
