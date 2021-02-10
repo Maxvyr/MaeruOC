@@ -14,7 +14,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.pandamy.maeruoc.R;
 import com.pandamy.maeruoc.controller.CallbackMeeting;
+import com.pandamy.maeruoc.di.DI;
 import com.pandamy.maeruoc.models.Meeting;
+import com.pandamy.maeruoc.service.ApiService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +26,7 @@ public class ListMeetingRecyclerViewAdapter extends RecyclerView.Adapter<ListMee
     private List<Meeting> meetings;
     private List<Meeting> meetingsFullList;
     private CallbackMeeting callBack;
+    private ApiService apiService = DI.getApiService();
     public static final String TAG = "ListMeetingRecyclerView";
 
 
@@ -97,17 +100,11 @@ public class ListMeetingRecyclerViewAdapter extends RecyclerView.Adapter<ListMee
 
                 for(Meeting meeting : meetingsFullList){
                     //avec le titre
-                    if(meeting.getTitle().toLowerCase().contains(filterPattern)){
-                        filteredList.add(meeting);
-                    }
+                    apiService.filterMeetingByName(meeting,filteredList,filterPattern);
                     //avec le nom de la room
-                    if(meeting.getRoom().getName().toLowerCase().contains(filterPattern)){
-                        filteredList.add(meeting);
-                    }
+                    apiService.filterMeetingByRoom(meeting,filteredList,filterPattern);
                     //avec la date
-                    if(meeting.getDate().contains(filterPattern)){
-                        filteredList.add(meeting);
-                    }
+                    apiService.filterMeetingByDate(meeting,filteredList,filterPattern);
                 }
             }
             FilterResults results = new FilterResults();

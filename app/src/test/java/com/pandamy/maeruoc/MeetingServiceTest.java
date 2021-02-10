@@ -16,6 +16,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import org.junit.runners.MethodSorters;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -125,4 +126,47 @@ public class MeetingServiceTest {
         assertTrue(meetingList.contains(meetingCreated));
     }
 
+    /**
+     * Filter meeting by name
+     */
+    @Test
+    public void H_filterMeetingByNameWithSuccess() {
+        String name = "Meeting D";
+        List<Meeting> filterList = new ArrayList<>();
+        List<Meeting> meetingsList = service.getMeetings();
+        for(Meeting meeting : meetingsList){
+            service.filterMeetingByName(meeting,filterList,name.toLowerCase());
+        }
+        assertEquals(1, filterList.size());
+    }
+
+
+
+    /**
+     * Filter meeting by date
+     */
+    @Test
+    public void I_filterMeetingByDateWithSuccess() {
+        String name = "20:30";
+        List<Meeting> filterList = new ArrayList<>();
+        List<Meeting> meetingsList = service.getMeetings();
+        for(Meeting meeting : meetingsList){
+            service.filterMeetingByDate(meeting,filterList,name.toLowerCase());
+        }
+        assertEquals(1, filterList.size());
+    }
+
+    /**
+     * Filter meeting by room
+     */
+    @Test
+    public void J_filterMeetingByRoomWithSuccess() {
+        String name = "Mario";
+        List<Meeting> filterList = new ArrayList<>();
+        List<Meeting> meetingsList = service.getMeetings();
+        for(Meeting meeting : meetingsList){
+            service.filterMeetingByRoom(meeting,filterList,name.toLowerCase());
+        }
+        assertEquals(1, filterList.size());
+    }
 }

@@ -54,5 +54,18 @@ public interface ApiService {
      */
     Meeting createMeeting(int id,String title, String date, Room room, String members);
 
+    /**
+     * Filer by Meeting Name
+     */
+    void filterMeetingByName(Meeting meeting, List<Meeting> filteredList, String filter);
 
+    /**
+     * Filer by Room Name
+     */
+    void filterMeetingByRoom(Meeting meeting, List<Meeting> filteredList, String filter);
+
+    /**
+     * Filer by Date
+     */
+    void filterMeetingByDate(Meeting meeting, List<Meeting> filteredList, String filter);
 }

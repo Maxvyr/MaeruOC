@@ -1,5 +1,7 @@
 package com.pandamy.maeruoc.service;
 
+import android.util.Log;
+
 import com.pandamy.maeruoc.models.Meeting;
 import com.pandamy.maeruoc.models.Member;
 import com.pandamy.maeruoc.models.Room;
@@ -55,4 +57,26 @@ public class DummyApiService implements  ApiService {
                 membersEmail
         );
     }
+
+    @Override
+    public void filterMeetingByName(Meeting meeting, List<Meeting> filteredList, String filter) {
+        if(meeting.getTitle().toLowerCase().contains(filter)){
+            filteredList.add(meeting);
+        }
+    }
+
+    @Override
+    public void filterMeetingByRoom(Meeting meeting, List<Meeting> filteredList, String filter) {
+        if(meeting.getRoom().getName().toLowerCase().contains(filter)){
+            filteredList.add(meeting);
+        }
+    }
+
+    @Override
+    public void filterMeetingByDate(Meeting meeting, List<Meeting> filteredList, String filter) {
+        if(meeting.getDate().contains(filter)){
+            filteredList.add(meeting);
+        }
+    }
+
 }
