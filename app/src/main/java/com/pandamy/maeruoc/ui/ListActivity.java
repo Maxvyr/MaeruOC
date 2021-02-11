@@ -18,14 +18,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.pandamy.maeruoc.R;
 import com.pandamy.maeruoc.controller.CallbackMeeting;
 import com.pandamy.maeruoc.di.DI;
+import com.pandamy.maeruoc.models.FilterChoose;
 import com.pandamy.maeruoc.models.Meeting;
 import com.pandamy.maeruoc.service.ApiService;
 
 import java.util.List;
-
-enum FilterChoose{
-    TITLE,DATE,ROOM
-}
 
 public class ListActivity extends AppCompatActivity implements CallbackMeeting {
 

@@ -1,6 +1,5 @@
 package com.pandamy.maeruoc.ui;
 
-import android.app.Activity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.pandamy.maeruoc.R;
 import com.pandamy.maeruoc.controller.CallbackMeeting;
 import com.pandamy.maeruoc.di.DI;
+import com.pandamy.maeruoc.models.FilterChoose;
 import com.pandamy.maeruoc.models.Meeting;
 import com.pandamy.maeruoc.service.ApiService;
 
