@@ -96,6 +96,12 @@ public class MeetingInstrumentedTest {
         onView(withText("OK"))
                 .perform(click());
 
+        //DATE
+        onView(withId(R.id.add_meeting_b_date))
+                .perform(click());
+        onView(withText("OK"))
+                .perform(click());
+
         //Members
         onView(withId(R.id.member_recycler_view)).check(matches(isDisplayed()))
                 .check(withItemCount(memberListSize))
@@ -134,7 +140,7 @@ public class MeetingInstrumentedTest {
     public void D_meetingList_filterAction_byMeetingName() {
 
         //click on button search
-        onView(withId(R.id.search_filter))
+        onView(withId(R.id.filter_title))
                 .perform(click());
 
         //search meeting by name
@@ -158,7 +164,7 @@ public class MeetingInstrumentedTest {
     public void E_meetingList_filterAction_byDate() {
 
         //click on button search
-        onView(withId(R.id.search_filter))
+        onView(withId(R.id.filter_date))
                 .perform(click());
 
         //search meeting by name
@@ -182,7 +188,7 @@ public class MeetingInstrumentedTest {
     public void F_meetingList_filterAction_byRoomName() {
 
         //click on button search
-        onView(withId(R.id.search_filter))
+        onView(withId(R.id.filter_room))
                 .perform(click());
 
         //search meeting by name
