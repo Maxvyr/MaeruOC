@@ -1,5 +1,6 @@
 package com.pandamy.maeruoc.ui;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -55,21 +56,32 @@ public class ListActivity extends AppCompatActivity implements CallbackMeeting {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
-        searchView(menu, R.id.filter_title);
-        searchView(menu, R.id.filter_date);
-        searchView(menu,R.id.filter_room);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.filter_title:
+                searchView(item);
+            case R.id.filter_date:
+                searchView(item);
+            case R.id.filter_room:
+                searchView(item);
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     /**
      * Show search view selected by user
-     * @param menu
-     * @param id
+     * @param item => MenuItem choose
      */
-    private void searchView(Menu menu, int id){
-        MenuItem searchItemName = menu.findItem(id);
-        SearchView searchView = (SearchView) searchItemName.getActionView();
-        setFilterChoose(id);
+    private void searchView(MenuItem item){
+//        MenuItem searchItemName = menu.findItem(id);
+
+        SearchView searchView = (SearchView) item.getActionView();
+        setFilterChoose(item.getItemId());
         searchView.setOnQueryTextListener(
                 new SearchView.OnQueryTextListener() {
                     @Override
@@ -87,13 +99,6 @@ public class ListActivity extends AppCompatActivity implements CallbackMeeting {
         );
     }
 
-    private void configRV(ListMeetingRecyclerViewAdapter adapter){
-        recyclerViewMeeting = findViewById(R.id.list_meetings);
-        recyclerViewMeeting.setLayoutManager(new LinearLayoutManager(this));
-        recyclerViewMeeting.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
-        recyclerViewMeeting.setAdapter(adapter);
-    }
-
     /**
      * Filter selection depending on click menu
      * @param id
@@ -106,6 +111,13 @@ public class ListActivity extends AppCompatActivity implements CallbackMeeting {
         } else if (id == R.id.filter_room) {
             filterChoose = FilterChoose.ROOM;
         }
+    }
+
+    private void configRV(ListMeetingRecyclerViewAdapter adapter){
+        recyclerViewMeeting = findViewById(R.id.list_meetings);
+        recyclerViewMeeting.setLayoutManager(new LinearLayoutManager(this));
+        recyclerViewMeeting.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+        recyclerViewMeeting.setAdapter(adapter);
     }
 
     /*
