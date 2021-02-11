@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.text.format.DateFormat;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
@@ -29,6 +31,7 @@ import com.pandamy.maeruoc.service.ApiService;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class AddMeetingActivity extends AppCompatActivity implements CallbackMember {
@@ -42,8 +45,11 @@ public class AddMeetingActivity extends AppCompatActivity implements CallbackMem
     private EditText titleMeetingEdit;
     private FloatingActionButton fabAddToList;
     private Spinner spinnerRooms;
-    private Button addMeetingHour;
-    private int hoursPick, minutesPick;
+    private Button addMeetingHour, addMeetingTime;
+    private int hoursPick, minutesPick, dayPick, monthPick, yearPick;
+    private final int yearNow = 2021;
+    private final int monthNow = 2;
+    private final int dayNow = 10;
     private boolean isTimePick = false;
     private static final String TAG = "AddMeetingActivity";
 
@@ -54,12 +60,14 @@ public class AddMeetingActivity extends AppCompatActivity implements CallbackMem
         configRV(adapter);
         coordinatorLayout = findViewById(R.id.add_meeting_coordinator_layout);
         addMeetingHour = findViewById(R.id.add_meeting_b_hour);
+        addMeetingTime = findViewById(R.id.add_meeting_b_date);
         titleMeetingEdit = findViewById(R.id.add_meeting_txt_topic);
         fabAddToList = findViewById(R.id.add_meeting_fab);
         spinnerRooms = findViewById(R.id.add_meeting_spinner_room);
 
         configureRoomSpinner();
         choiceHourMeeting();
+        choiceDateMeeting();
         setClickAddNewMeeting();
     }
 
@@ -130,6 +138,28 @@ public class AddMeetingActivity extends AppCompatActivity implements CallbackMem
             );
             timePickerDialog.updateTime(hoursPick,minutesPick);
             timePickerDialog.show();
+        });
+    }
+
+    /*
+     * Choice date meeting
+     */
+    private void choiceDateMeeting(){
+        addMeetingTime.setOnClickListener(v -> {
+            //TimePickerDialog
+            DatePickerDialog datePickerDialog = new DatePickerDialog(
+                    AddMeetingActivity.this,
+                    (DatePickerDialog.OnDateSetListener) (view, year, month, dayOfMonth) -> {
+                        yearPick = year;
+                        monthPick = month;
+                        dayPick = dayOfMonth;
+                        Calendar calendar = Calendar.getInstance();
+                        calendar.set(yearPick,monthPick,dayPick);
+                        addMeetingTime.setText(DateFormat.format("dd-MM-yyyy",calendar));
+                    },yearNow,monthNow,dayNow
+                    );
+            datePickerDialog.updateDate(yearPick,monthPick, dayPick);
+            datePickerDialog.show();
         });
     }
 
