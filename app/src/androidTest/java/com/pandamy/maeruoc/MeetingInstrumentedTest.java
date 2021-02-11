@@ -1,27 +1,20 @@
 package com.pandamy.maeruoc;
 
-import android.content.Context;
 
-import androidx.test.espresso.action.ViewActions;
-import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
 
-import com.pandamy.maeruoc.models.Meeting;
 import com.pandamy.maeruoc.service.DummyGenerator;
 import com.pandamy.maeruoc.ui.ListActivity;
 import com.pandamy.maeruoc.utils.AddMemberViewAction;
 import com.pandamy.maeruoc.utils.DeleteViewAction;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.*;
 import org.junit.runners.MethodSorters;
-
-import java.util.List;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
@@ -31,14 +24,12 @@ import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
 import static androidx.test.espresso.matcher.ViewMatchers.assertThat;
-import static androidx.test.espresso.matcher.ViewMatchers.hasChildCount;
 import static androidx.test.espresso.matcher.ViewMatchers.hasMinimumChildCount;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static com.pandamy.maeruoc.utils.RecyclerViewItemCountAssertion.withItemCount;
 import static org.hamcrest.core.IsNull.notNullValue;
-import static org.junit.Assert.*;
 
 
 @RunWith(AndroidJUnit4.class)
@@ -139,8 +130,16 @@ public class MeetingInstrumentedTest {
     @Test
     public void D_meetingList_filterAction_byMeetingName() {
 
-        //click on button search
-        onView(withId(R.id.filter_title))
+        //click on button menu
+        onView(withId(R.id.main_filter))
+                .perform(click());
+
+        //check if Filter by title is showing
+        onView(withText("Filter by title"))
+                .check(matches(isDisplayed()));
+
+        //click on filter by title
+        onView(withText("Filter by title"))
                 .perform(click());
 
         //search meeting by name
@@ -163,8 +162,16 @@ public class MeetingInstrumentedTest {
     @Test
     public void E_meetingList_filterAction_byDate() {
 
-        //click on button search
-        onView(withId(R.id.filter_date))
+        //click on button menu
+        onView(withId(R.id.main_filter))
+                .perform(click());
+
+        //check if Filter by date is showing
+        onView(withText("Filter by date"))
+                .check(matches(isDisplayed()));
+
+        //click on filter by date
+        onView(withText("Filter by date"))
                 .perform(click());
 
         //search meeting by name
@@ -187,8 +194,16 @@ public class MeetingInstrumentedTest {
     @Test
     public void F_meetingList_filterAction_byRoomName() {
 
-        //click on button search
-        onView(withId(R.id.filter_room))
+        //click on button menu
+        onView(withId(R.id.main_filter))
+                .perform(click());
+
+        //check if Filter by room is showing
+        onView(withText("Filter by room"))
+                .check(matches(isDisplayed()));
+
+        //click on filter by date
+        onView(withText("Filter by room"))
                 .perform(click());
 
         //search meeting by name
