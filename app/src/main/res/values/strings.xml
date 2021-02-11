@@ -20,6 +20,7 @@
     <string name="filtrer_par_salle">Filter by room</string>
     <string name="supprimer_les_filtres">delete all filters</string>
     <string name="filtrer">Filtrer</string>
+    <string name="filter_by_title">Filter by title</string>
 
 
 </resources>

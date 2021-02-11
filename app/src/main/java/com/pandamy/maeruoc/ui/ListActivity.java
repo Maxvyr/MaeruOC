@@ -1,6 +1,5 @@
 package com.pandamy.maeruoc.ui;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -13,7 +12,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.pandamy.maeruoc.R;
@@ -24,6 +22,10 @@ import com.pandamy.maeruoc.service.ApiService;
 
 import java.util.List;
 
+enum FilterChoose{
+    TITLE,DATE,ROOM
+}
+
 public class ListActivity extends AppCompatActivity implements CallbackMeeting {
 
     //Variable
@@ -32,6 +34,7 @@ public class ListActivity extends AppCompatActivity implements CallbackMeeting {
     private ListMeetingRecyclerViewAdapter adapter;
     private RecyclerView recyclerViewMeeting;
     private FloatingActionButton fabAddMeeting;
+    public static FilterChoose filterChoose;
     private static final String TAG = "ListActivity";
 
     @Override
@@ -52,9 +55,21 @@ public class ListActivity extends AppCompatActivity implements CallbackMeeting {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
+        searchView(menu, R.id.filter_title);
+        searchView(menu, R.id.filter_date);
+        searchView(menu,R.id.filter_room);
+        return true;
+    }
 
-        MenuItem searchItem = menu.findItem(R.id.search_filter);
-        SearchView searchView = (SearchView) searchItem.getActionView();
+    /**
+     * Show search view selected by user
+     * @param menu
+     * @param id
+     */
+    private void searchView(Menu menu, int id){
+        MenuItem searchItemName = menu.findItem(id);
+        SearchView searchView = (SearchView) searchItemName.getActionView();
+        setFilterChoose(id);
         searchView.setOnQueryTextListener(
                 new SearchView.OnQueryTextListener() {
                     @Override
@@ -64,12 +79,12 @@ public class ListActivity extends AppCompatActivity implements CallbackMeeting {
 
                     @Override
                     public boolean onQueryTextChange(String newText) {
+                        Log.d(TAG, "onQueryTextChange: filter choose " + filterChoose.toString());
                         adapter.getFilter().filter(newText);
                         return false;
                     }
                 }
         );
-        return true;
     }
 
     private void configRV(ListMeetingRecyclerViewAdapter adapter){
@@ -77,6 +92,20 @@ public class ListActivity extends AppCompatActivity implements CallbackMeeting {
         recyclerViewMeeting.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewMeeting.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         recyclerViewMeeting.setAdapter(adapter);
+    }
+
+    /**
+     * Filter selection depending on click menu
+     * @param id
+     */
+    private void setFilterChoose(int id){
+        if(id == R.id.filter_title){
+            filterChoose = FilterChoose.TITLE;
+        } else if (id == R.id.filter_date){
+            filterChoose = FilterChoose.DATE;
+        } else if (id == R.id.filter_room) {
+            filterChoose = FilterChoose.ROOM;
+        }
     }
 
     /*

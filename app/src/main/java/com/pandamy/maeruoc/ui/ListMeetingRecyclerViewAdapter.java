@@ -1,6 +1,7 @@
 package com.pandamy.maeruoc.ui;
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,8 @@ import com.pandamy.maeruoc.service.ApiService;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.pandamy.maeruoc.ui.ListActivity.filterChoose;
 
 public class ListMeetingRecyclerViewAdapter extends RecyclerView.Adapter<ListMeetingRecyclerViewAdapter.ViewHolder> implements Filterable {
 
@@ -84,32 +87,40 @@ public class ListMeetingRecyclerViewAdapter extends RecyclerView.Adapter<ListMee
 
     @Override
     public Filter getFilter() {
-        return meetingsFilter;
+        Log.d(TAG, "getFilter: filter choose " + filterChoose.toString());
+        return meetingsFilter(filterChoose);
     }
 
-    private Filter meetingsFilter = new Filter() {
-        @Override
-        protected FilterResults performFiltering(CharSequence constraint) {
-            List<Meeting> filteredList = new ArrayList<>();
+    private Filter meetingsFilter(FilterChoose filterChoose){
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                List<Meeting> filteredList = new ArrayList<>();
 
-            if(constraint == null || constraint.length() == 0) {
-                filteredList.addAll(meetingsFullList);
-            } else{
-                //en minuscule et supprimer les espaces
-                String filterPattern = constraint.toString().toLowerCase().trim();
+                if (constraint == null || constraint.length() == 0) {
+                    filteredList.addAll(meetingsFullList);
+                } else {
+                    //en minuscule et supprimer les espaces
+                    String filterPattern = constraint.toString().toLowerCase().trim();
 
-                for(Meeting meeting : meetingsFullList){
-                    //avec le titre
-                    apiService.filterMeetingByName(meeting,filteredList,filterPattern);
-                    //avec le nom de la room
-                    apiService.filterMeetingByRoom(meeting,filteredList,filterPattern);
-                    //avec la date
-                    apiService.filterMeetingByDate(meeting,filteredList,filterPattern);
+                    for (Meeting meeting : meetingsFullList) {
+                        //avec le titre
+                        if(filterChoose == FilterChoose.TITLE){
+                            apiService.filterMeetingByName(meeting, filteredList, filterPattern);
+                        }
+                        //avec la date
+                        if(filterChoose == FilterChoose.DATE){
+                            apiService.filterMeetingByDate(meeting, filteredList, filterPattern);
+                        }
+                        //avec le nom de la room
+                        if(filterChoose == FilterChoose.ROOM){
+                            apiService.filterMeetingByRoom(meeting, filteredList, filterPattern);
+                        }
+                    }
                 }
-            }
-            FilterResults results = new FilterResults();
-            results.values = filteredList;
-            return results;
+                FilterResults results = new FilterResults();
+                results.values = filteredList;
+                return results;
         }
 
         @Override
@@ -119,4 +130,5 @@ public class ListMeetingRecyclerViewAdapter extends RecyclerView.Adapter<ListMee
             notifyDataSetChanged();
         }
     };
+}
 }
