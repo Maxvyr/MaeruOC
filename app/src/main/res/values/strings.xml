@@ -21,6 +21,8 @@
     <string name="supprimer_les_filtres">delete all filters</string>
     <string name="filtrer">Filtrer</string>
     <string name="filter_by_title">Filter by title</string>
+    <string name="date">Date</string>
+    <string name="date_random">01-01-2021</string>
 
 
 </resources>
