@@ -31,7 +31,6 @@ import com.pandamy.maeruoc.service.ApiService;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 public class AddMeetingActivity extends AppCompatActivity implements CallbackMember {
@@ -45,12 +44,14 @@ public class AddMeetingActivity extends AppCompatActivity implements CallbackMem
     private EditText titleMeetingEdit;
     private FloatingActionButton fabAddToList;
     private Spinner spinnerRooms;
-    private Button addMeetingHour, addMeetingTime;
+    private Button addMeetingHour, addMeetingDate;
     private int hoursPick, minutesPick, dayPick, monthPick, yearPick;
-    private final int yearNow = 2021;
-    private final int monthNow = 2;
-    private final int dayNow = 10;
+    private final Calendar c = Calendar.getInstance();
+    private final int yearNow = c.get(Calendar.YEAR);
+    private final int monthNow = c.get(Calendar.MONTH);
+    private final int dayNow = c.get(Calendar.DAY_OF_MONTH);
     private boolean isTimePick = false;
+    private boolean isDatePick = false;
     private static final String TAG = "AddMeetingActivity";
 
     @Override
@@ -60,7 +61,7 @@ public class AddMeetingActivity extends AppCompatActivity implements CallbackMem
         configRV(adapter);
         coordinatorLayout = findViewById(R.id.add_meeting_coordinator_layout);
         addMeetingHour = findViewById(R.id.add_meeting_b_hour);
-        addMeetingTime = findViewById(R.id.add_meeting_b_date);
+        addMeetingDate = findViewById(R.id.add_meeting_b_date);
         titleMeetingEdit = findViewById(R.id.add_meeting_txt_topic);
         fabAddToList = findViewById(R.id.add_meeting_fab);
         spinnerRooms = findViewById(R.id.add_meeting_spinner_room);
@@ -145,24 +146,25 @@ public class AddMeetingActivity extends AppCompatActivity implements CallbackMem
      * Choice date meeting
      */
     private void choiceDateMeeting(){
-        addMeetingTime.setOnClickListener(v -> {
-            //TimePickerDialog
+        addMeetingDate.setOnClickListener(v -> {
+            //DatePickerDialog
             DatePickerDialog datePickerDialog = new DatePickerDialog(
                     AddMeetingActivity.this,
                     (DatePickerDialog.OnDateSetListener) (view, year, month, dayOfMonth) -> {
+                        //check if date is selected
+                        isDatePick = true;
                         yearPick = year;
                         monthPick = month;
                         dayPick = dayOfMonth;
                         Calendar calendar = Calendar.getInstance();
                         calendar.set(yearPick,monthPick,dayPick);
-                        addMeetingTime.setText(DateFormat.format("dd-MM-yyyy",calendar));
+                        addMeetingDate.setText(DateFormat.format("dd-MM-yyyy",calendar));
                     },yearNow,monthNow,dayNow
                     );
-            datePickerDialog.updateDate(yearPick,monthPick, dayPick);
+            datePickerDialog.updateDate(yearNow,monthNow,dayNow);
             datePickerDialog.show();
         });
     }
-
 
     /*
      * Click button add new meeting
@@ -184,6 +186,8 @@ public class AddMeetingActivity extends AppCompatActivity implements CallbackMem
             showSnackbar("Il manque le titre");
         } else if (!isTimePick){
             showSnackbar("Il manque l'heure");
+        } else if (!isDatePick){
+            showSnackbar("Il manque la date");
         } else if (membersEmail == null){
             showSnackbar("Aucun membre sélectionner");
         } else {
@@ -201,7 +205,8 @@ public class AddMeetingActivity extends AppCompatActivity implements CallbackMem
         //title meeting
         String titleSelected = titleMeetingEdit.getText().toString();
         //date
-        String dateSelected = hoursPick + ":" + minutesPick;
+        c.set(yearPick,monthPick,dayPick,hoursPick,minutesPick);
+        String dateSelected = DateFormat.format("dd-MM-yyyy hh:mm",c).toString();
         //recover Room selected
         Room roomSelected = apiService.getRooms().get(spinnerRooms.getSelectedItemPosition());
         //Member selected
