@@ -131,9 +131,8 @@ public class AddMeetingActivity extends AppCompatActivity implements CallbackMem
                             isTimePick = true;
                             hoursPick = hourOfDay;
                             minutesPick = minute;
-                            Calendar calendar = Calendar.getInstance();
-                            calendar.set(0,0,0,hoursPick,minutesPick);
-                            addMeetingHour.setText(DateFormat.format("HH:mm", calendar));
+                            c.set(0,0,0,hoursPick,minutesPick);
+                            addMeetingHour.setText(DateFormat.format("HH:mm", c));
                         }
                     }, 12,0,true
             );
@@ -156,9 +155,8 @@ public class AddMeetingActivity extends AppCompatActivity implements CallbackMem
                         yearPick = year;
                         monthPick = month;
                         dayPick = dayOfMonth;
-                        Calendar calendar = Calendar.getInstance();
-                        calendar.set(yearPick,monthPick,dayPick);
-                        addMeetingDate.setText(DateFormat.format("dd-MM-yyyy",calendar));
+                        c.set(yearPick,monthPick,dayPick);
+                        addMeetingDate.setText(DateFormat.format("dd-MM-yyyy",c));
                     },yearNow,monthNow,dayNow
                     );
             datePickerDialog.updateDate(yearNow,monthNow,dayNow);
