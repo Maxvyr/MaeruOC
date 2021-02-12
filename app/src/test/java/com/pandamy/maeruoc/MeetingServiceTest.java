@@ -135,7 +135,7 @@ public class MeetingServiceTest {
         List<Meeting> filterList = new ArrayList<>();
         List<Meeting> meetingsList = service.getMeetings();
         for(Meeting meeting : meetingsList){
-            service.filterMeetingByName(meeting,filterList,name.toLowerCase());
+            service.filterMeetingByName(meeting,filterList,name);
         }
         assertEquals(1, filterList.size());
     }
@@ -151,7 +151,7 @@ public class MeetingServiceTest {
         List<Meeting> filterList = new ArrayList<>();
         List<Meeting> meetingsList = service.getMeetings();
         for(Meeting meeting : meetingsList){
-            service.filterMeetingByDate(meeting,filterList,name.toLowerCase());
+            service.filterMeetingByDate(meeting,filterList,name);
         }
         assertEquals(1, filterList.size());
     }
@@ -165,7 +165,7 @@ public class MeetingServiceTest {
         List<Meeting> filterList = new ArrayList<>();
         List<Meeting> meetingsList = service.getMeetings();
         for(Meeting meeting : meetingsList){
-            service.filterMeetingByRoom(meeting,filterList,name.toLowerCase());
+            service.filterMeetingByRoom(meeting,filterList,name);
         }
         assertEquals(1, filterList.size());
     }

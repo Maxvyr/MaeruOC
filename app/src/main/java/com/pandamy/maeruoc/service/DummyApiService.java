@@ -60,21 +60,21 @@ public class DummyApiService implements  ApiService {
 
     @Override
     public void filterMeetingByName(Meeting meeting, List<Meeting> filteredList, String filter) {
-        if(meeting.getTitle().toLowerCase().contains(filter)){
+        if(meeting.getTitle().toLowerCase().contains(filter.toLowerCase())){
             filteredList.add(meeting);
         }
     }
 
     @Override
     public void filterMeetingByRoom(Meeting meeting, List<Meeting> filteredList, String filter) {
-        if(meeting.getRoom().getName().toLowerCase().contains(filter)){
+        if(meeting.getRoom().getName().toLowerCase().contains(filter.toLowerCase())){
             filteredList.add(meeting);
         }
     }
 
     @Override
     public void filterMeetingByDate(Meeting meeting, List<Meeting> filteredList, String filter) {
-        if(meeting.getDate().contains(filter)){
+        if(meeting.getDate().contains(filter.toLowerCase())){
             filteredList.add(meeting);
         }
     }
