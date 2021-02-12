@@ -84,7 +84,6 @@ public class ListMeetingRecyclerViewAdapter extends RecyclerView.Adapter<ListMee
     }
 
 
-
     @Override
     public Filter getFilter() {
         Log.d(TAG, "getFilter: filter choose " + filterChoose.toString());
@@ -104,17 +103,17 @@ public class ListMeetingRecyclerViewAdapter extends RecyclerView.Adapter<ListMee
                     String filterPattern = constraint.toString().toLowerCase().trim();
 
                     for (Meeting meeting : meetingsFullList) {
-                        //avec le titre
-                        if(filterChoose == FilterChoose.TITLE){
-                            apiService.filterMeetingByName(meeting, filteredList, filterPattern);
-                        }
-                        //avec la date
-                        if(filterChoose == FilterChoose.DATE){
-                            apiService.filterMeetingByDate(meeting, filteredList, filterPattern);
-                        }
-                        //avec le nom de la room
-                        if(filterChoose == FilterChoose.ROOM){
-                            apiService.filterMeetingByRoom(meeting, filteredList, filterPattern);
+
+                        switch (filterChoose){
+                            case TITLE:
+                                //avec le titre
+                                apiService.filterMeetingByName(meeting, filteredList, filterPattern);
+                            case DATE:
+                                //avec la date
+                                apiService.filterMeetingByDate(meeting, filteredList, filterPattern);
+                            case ROOM:
+                                //avec le nom de la room
+                                apiService.filterMeetingByRoom(meeting, filteredList, filterPattern);
                         }
                     }
                 }
